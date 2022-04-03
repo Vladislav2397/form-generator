@@ -1,0 +1,153 @@
+.card-order {
+    min-width: toRem(280);
+
+    &__top {
+        display: table;
+        position: relative;
+        width: 100%;
+    }
+
+    &__bottom {
+        position: relative;
+    }
+
+    &__text {
+        @include fontSize(p5);
+
+        &--bank {
+            text-transform: capitalize;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: toRem(6);
+        }
+    }
+
+    &__item {
+        display: table-cell;
+
+        &--align-right {
+            text-align: right;
+        }
+    }
+
+    &__information {
+        @include fontSize(p4);
+    }
+
+    &__icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__status {
+        & + & {
+            margin-left: toRem(4);
+        }
+    }
+
+    &__sum {
+        @include fontSize(p3, (weight: 600));
+    }
+
+    &__divider {
+        @include marginLevel(vertical, green);
+    }
+
+    @media (max-width: $maxMobileLate) {
+        &__top {
+            $space: to-unit(map-get($spaces, red));
+            $linkLineHeight: nth(map-get($tags, p5), 2);
+
+            padding-bottom: $space + $linkLineHeight;
+        }
+
+        &__link {
+            &--contract-number {
+                left: 0;
+                bottom: 0;
+                position: absolute;
+            }
+        }
+
+        &__statuses {
+            @include marginLevel(top, green);
+
+            white-space: nowrap;
+        }
+
+        &__wrapper {
+            &--button {
+                @include marginLevel(top, green);
+            }
+        }
+
+        &__button {
+            width: 100%;
+        }
+
+        &__sum {
+            position: absolute;
+            right: 0;
+            top: toRem(5);
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        min-width: toRem(640);
+
+        &__item {
+            vertical-align: top;
+            white-space: nowrap;
+
+            &--company {
+                max-width: toRem(152);
+            }
+
+            &--wide {
+                width: 100%;
+            }
+
+            & + & {
+                padding-left: toRem(12);
+            }
+        }
+
+        &__link {
+            @include marginLevel(top, red);
+
+            &--company-name {
+                max-width: 100%;
+
+                & > span {
+                    @include ellipsis;
+                }
+            }
+        }
+
+        &__bottom {
+            display: table;
+            width: 100%;
+
+            & > * {
+                display: table-cell;
+                vertical-align: middle;
+                white-space: nowrap;
+            }
+        }
+
+        &__wrapper {
+            &--button {
+                text-align: right;
+                width: 100%;
+            }
+        }
+
+        &__button {
+            min-width: toRem(134);
+        }
+
+        &__statuses {
+            padding-left: toRem(12);
+        }
+    }
+}

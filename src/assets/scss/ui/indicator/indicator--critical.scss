@@ -1,0 +1,26 @@
+.indicator {
+    font-size: toRem(10);
+    line-height: toRem(10);
+
+    &--view {
+        &-success {
+            color: var(--textSuccess);
+        }
+
+        &-critical {
+            color: var(--textCritical);
+        }
+
+        &-warning {
+            color: var(--textWarning);
+        }
+
+        &-system {
+            color: var(--textSecondary);
+        }
+
+        &-brand {
+            color: var(--textBrand);
+        }
+    }
+}

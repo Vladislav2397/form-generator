@@ -1,0 +1,98 @@
+.auth-login {
+    &__title {
+        @include marginLevel(bottom, green);
+    }
+
+    &__register {
+        @include marginLevel(bottom, blue);
+
+        span {
+            @include fontSize(p4);
+
+            margin-right: toRem(12);
+            color: var(--textSecondary);
+        }
+    }
+
+    &__input {
+        & + & {
+            @include marginLevel(top, green);
+        }
+    }
+
+    &__button {
+        &--enter {
+            @include marginLevel(top, blue);
+
+            width: 100%;
+        }
+    }
+
+    &__divider-wrapper {
+        @include marginLevel(vertical, cobalt);
+
+        font-size: 0;
+
+        p {
+            display: inline-block;
+            vertical-align: middle;
+            color: var(--textSecondary);
+
+            @include fontSize(p4);
+
+            margin: 0 toRem(5);
+        }
+    }
+
+    &__divider {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(50% - 1.583rem);
+    }
+
+    &__media {
+        width: 100%;
+        margin-bottom: toRem(-12);
+    }
+
+    &__link {
+        display: inline-block;
+
+        @media (max-width: $maxTablet) {
+            width: calc(50% - 0.333rem);
+            margin-bottom: toRem(12);
+
+            &:nth-child(even) {
+                margin-left: toRem(8);
+            }
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        min-height: toRem(500);
+    }
+
+    @media (min-width: $desktop) {
+        min-height: toRem(428);
+
+        &__container {
+            padding: 0 toRem(60);
+        }
+
+        &__register {
+            @include marginLevel(bottom, blue);
+        }
+
+        &__media {
+            margin: 0 auto;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        &__link {
+            & + & {
+                margin-left: toRem(8);
+            }
+        }
+    }
+}

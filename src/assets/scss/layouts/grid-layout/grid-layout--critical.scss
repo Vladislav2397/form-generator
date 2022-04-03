@@ -1,0 +1,16 @@
+.grid-layout {
+    &__item {
+        display: inline-block;
+        box-sizing: border-box;
+
+        //@each $spaceLevel, $pixels in $spaces {
+        //    & + &--space-#{$spaceLevel} {
+        //        @include marginLevel(top, $spaceLevel);
+        //    }
+        //}
+
+        & > p {
+            @include fontSize(p5);
+        }
+    }
+}

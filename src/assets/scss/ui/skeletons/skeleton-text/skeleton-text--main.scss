@@ -1,0 +1,19 @@
+.skeleton-animation {
+    animation: pulse 2s ease infinite;
+    cursor: default;
+    user-select: none;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

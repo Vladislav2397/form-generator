@@ -1,0 +1,39 @@
+.title {
+    font-weight: 600;
+
+    &--view {
+        &-base {
+            color: var(--textBase);
+        }
+
+        &-secondary {
+            color: var(--textSecondary);
+        }
+
+        &-success {
+            color: var(--textSuccess);
+        }
+    }
+
+    &--size {
+        &-xxs {
+            @include fontSize(p5);
+        }
+
+        &-xs {
+            @include fontSize(p4);
+        }
+
+        &-s {
+            @include fontSize(p3);
+        }
+
+        &-m {
+            @include fontSize(h3);
+        }
+
+        &-l {
+            @include fontSize(h2);
+        }
+    }
+}

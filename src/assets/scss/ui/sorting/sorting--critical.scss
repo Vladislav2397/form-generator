@@ -1,0 +1,40 @@
+.sorting {
+    white-space: nowrap;
+
+    &__title {
+        color: var(--textSecondary);
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: toRem(12);
+
+        @include fontSize(p5);
+    }
+
+    &__options {
+        vertical-align: middle;
+        display: inline-block;
+    }
+
+    &__option {
+        position: relative;
+        display: inline-block;
+
+        @include fontSize(p5);
+
+        margin-right: toRem(12);
+
+        i {
+            font-size: toRem(16);
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-left: toRem(4);
+            color: var(--textBrand);
+        }
+
+        &.is-active {
+            color: var(--textBrand);
+            margin-right: toRem(12 + 16 + 4);
+        }
+    }
+}

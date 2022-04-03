@@ -1,0 +1,19 @@
+.modal-dialog {
+    &__description {
+        margin-top: toRem(8);
+
+        @include fontSize(p4);
+
+        color: var(--textSecondary);
+    }
+
+    &__content {
+        padding-top: toRem(16);
+    }
+
+    @media (min-width: $tabletLate) {
+        &__content {
+            padding: toRem(16) toRem(16) 0;
+        }
+    }
+}

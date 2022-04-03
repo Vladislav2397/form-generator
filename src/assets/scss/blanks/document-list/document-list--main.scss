@@ -1,0 +1,55 @@
+.document-list {
+    &__section {
+        & + & {
+            @include marginLevel(top, blue);
+        }
+    }
+
+    &__head {
+        @include marginLevel(bottom, green);
+
+        display: table;
+    }
+
+    &__left,
+    &__right {
+        display: table-cell;
+    }
+
+    &__left {
+        width: 100%;
+    }
+
+    &__right {
+        white-space: nowrap;
+    }
+
+    &__title,
+    &__icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__tooltip {
+        display: inline-block;
+        font-size: 0;
+        margin-left: toRem(4);
+        vertical-align: middle;
+    }
+
+    &__icon {
+        font-size: toRem(20);
+        color: var(--textSecondary);
+        opacity: 0.5;
+    }
+
+    &__file {
+        & + & {
+            @include marginLevel(top, orange);
+        }
+    }
+
+    &__badge.skeleton-animation {
+        width: toRem(50);
+    }
+}

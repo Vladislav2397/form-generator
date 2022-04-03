@@ -1,0 +1,18 @@
+.skeleton-round {
+    min-width: toRem(24);
+    min-height: toRem(24);
+    position: relative;
+    display: inline-block;
+
+    &::before {
+        content: '';
+
+        @include center;
+
+        width: 75%;
+        height: 75%;
+        background-color: var(--textSecondary);
+        border-radius: 50%;
+        opacity: 0.25;
+    }
+}

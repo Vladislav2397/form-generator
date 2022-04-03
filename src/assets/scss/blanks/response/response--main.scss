@@ -1,0 +1,35 @@
+.response {
+    text-align: center;
+    max-width: toRem(288);
+
+    &__slot {
+        @include marginLevel(bottom, pink);
+
+        & > * {
+            display: inline-block;
+        }
+    }
+
+    &__description {
+        @include marginLevel(top, red);
+        @include fontSize(p4);
+
+        color: var(--textSecondary);
+    }
+
+    &__buttons {
+        @include marginLevel(top, pink);
+    }
+
+    &__button {
+        width: 100%;
+    }
+
+    &__button--line {
+        width: calc(50% - #{toRem(6)});
+
+        & + & {
+            margin-left: toRem(12);
+        }
+    }
+}

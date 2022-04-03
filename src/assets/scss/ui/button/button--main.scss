@@ -1,0 +1,195 @@
+.button {
+    transition: 0.3s ease;
+    transition-property: opacity, color, background-color, border-color;
+
+    &__spinner {
+        pointer-events: none;
+    }
+
+    .button__icon {
+        &::before {
+            transition: 0.3s ease;
+            transition-property: color;
+        }
+    }
+
+    &--view {
+        &-brand {
+            &:active {
+                background-color: var(--controlBrandBackground);
+            }
+        }
+
+        &-secondary-brand {
+            &:active {
+                background-color: var(--controlSecondaryBrandBackground);
+            }
+        }
+
+        &-outline-brand {
+            &:active {
+                border-color: var(--controlOutlineBrandBorder);
+            }
+        }
+
+        &-outline {
+            &:active {
+                border-color: var(--controlOutlineBorder);
+            }
+        }
+
+        &-flat-brand {
+            &:active {
+                color: var(--controlFlatBrandText);
+            }
+        }
+
+        &-critical {
+            &:active {
+                background-color: var(--controlCriticalBackground);
+            }
+        }
+
+        &-success {
+            &:active {
+                background-color: var(--controlSuccessBackground);
+            }
+        }
+
+        &-warning {
+            &:active {
+                background-color: var(--controlWarningBackground);
+            }
+        }
+
+        &-flat {
+            &:active {
+                color: var(--controlFlatSystemText);
+
+                .button__icon {
+                    &::before {
+                        color: var(--controlFlatSystemText);
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &--view {
+            &-brand {
+                &:hover {
+                    background-color: var(--controlBrandBackgroundHover);
+                }
+
+                &:active {
+                    background-color: var(--controlBrandBackground);
+                }
+            }
+
+            &-secondary-brand {
+                &:hover {
+                    background-color: var(--controlSecondaryBrandBackgroundHover);
+                }
+
+                &:active {
+                    background-color: var(--controlSecondaryBrandBackground);
+                }
+            }
+
+            &-outline-brand {
+                &:hover {
+                    border-color: var(--controlOutlineBrandBorderHover);
+                }
+
+                &:active {
+                    border-color: var(--controlOutlineBrandBorder);
+                }
+            }
+
+            &-outline {
+                &:hover {
+                    border-color: var(--controlOutlineBorderHover);
+                }
+
+                &:active {
+                    border-color: var(--controlOutlineBorder);
+                }
+            }
+
+            &-flat-brand {
+                &:hover {
+                    color: var(--controlFlatBrandTextHover);
+
+                    .button__icon {
+                        &::before {
+                            color: var(--controlFlatBrandTextHover);
+                        }
+                    }
+                }
+
+                &:active {
+                    color: var(--controlFlatBrandText);
+
+                    .button__icon {
+                        &::before {
+                            color: var(--controlFlatBrandText);
+                        }
+                    }
+                }
+            }
+
+            &-critical {
+                &:hover {
+                    background-color: var(--controlCriticalBackgroundHover);
+                }
+
+                &:active {
+                    background-color: var(--controlCriticalBackground);
+                }
+            }
+
+            &-success {
+                &:hover {
+                    background-color: var(--controlSuccessBackgroundHover);
+                }
+
+                &:active {
+                    background-color: var(--controlSuccessBackground);
+                }
+            }
+
+            &-warning {
+                &:hover {
+                    background-color: var(--controlWarningBackgroundHover);
+                }
+
+                &:active {
+                    background-color: var(--controlWarningBackground);
+                }
+            }
+
+            &-flat {
+                &:hover {
+                    color: var(--controlFlatSystemTextHover);
+
+                    .button__icon {
+                        &::before {
+                            color: var(--controlFlatSystemTextHover);
+                        }
+                    }
+                }
+
+                &:active {
+                    color: var(--controlFlatSystemText);
+
+                    .button__icon {
+                        &::before {
+                            color: var(--controlFlatSystemText);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

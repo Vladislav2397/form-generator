@@ -1,0 +1,67 @@
+.information-modal {
+    &__text {
+        font-size: 0;
+    }
+
+    &__title {
+        display: inline;
+        vertical-align: middle;
+    }
+
+    &__icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: toRem(6);
+
+        &--check {
+            width: toRem(20);
+        }
+    }
+
+    &__description {
+        @include fontSize(p5);
+
+        color: var(--textSecondary);
+        display: inline;
+        vertical-align: middle;
+    }
+
+    &__wrapper {
+        font-size: 0;
+
+        & + & {
+            margin-top: toRem(4);
+        }
+    }
+
+    @media (max-width: $maxMobile) {
+        text-align: center;
+
+        &__button {
+            & > * {
+                min-width: 100%;
+            }
+        }
+
+        &__text {
+            @include marginLevel(bottom ,green);
+        }
+    }
+
+    @media (min-width: $tablet) {
+        display: table;
+        width: 100%;
+
+        &__text {
+            display: table-cell;
+            vertical-align: middle;
+            padding-right: toRem(20);
+        }
+
+        &__button {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+        }
+    }
+}

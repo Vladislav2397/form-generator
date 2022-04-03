@@ -1,0 +1,115 @@
+:root {
+    --base: #{hsla-str($base)};
+    --system: #{hsla-str($system)};
+    --surface: #{hsla-str($surface)};
+    --background: #{hsla-str($background)};
+    --brand: #{hsla-str($brand)};
+    --interactive: #{hsla-str($interactive)};
+    --critical: #{hsla-str($critical)};
+    --success: #{hsla-str($success)};
+    --warning: #{hsla-str($warning)};
+
+    //TEXT
+    --textBase: var(--base);
+    --textSecondary: #{hsla-str($textSecondary)};
+    --textBrand: var(--brand);
+    --textSuccess: #{hsla-str($textSuccess)};
+    --textWarning: #{hsla-str($textWarning)};
+    --textCritical: #{hsla-str($textCritical)};
+    --textLinkInteractive: var(--interactive);
+    --textLinkInteractiveHover: #{hsla-str($textLinkInteractiveHover)};
+    --textLinkSecondary: #{hsla-str($textLinkSecondary)};
+    --textLinkSecondaryHover: #{hsla-str($textLinkSecondaryHover)};
+    --textBaseAccent: linear-gradient(90deg, var(--base) 0%, #{ hsla-str(hsla-new($base, (a: 0.5))) } 100%);
+    --textSecondaryAccent: linear-gradient(90deg, #{hsla-str(hsla-new($base, (l: lightness($base) + 45)))} 0%, #{hsla-str(hsla-new($base, (l: lightness($base) + 45, a: 0.5)))} 100%);
+    --textBrandAccent: linear-gradient(90deg, var(--brand) 0%, #{hsla-str(hsla-new($brand, (a: 0.5)))} 100%);
+    --textLinkBase: var(--base);
+
+    //BACKGROUND
+    --backgroundBase: var(--background);
+    --backgroundSurface: var(--surface);
+    --backgroundOverlayPage: #{hsla-str($backgroundOverlayPage)};
+    --backgroundBrandAccent: linear-gradient(270deg, var(--brand) 0%, #{hsla-str(hsla-new($brand, (l: lightness($brand) + 20)))} 100%);
+    --backgroundWarningAccent: linear-gradient(270deg, var(--warning) 0%, #{hsla-str(hsla-new($warning, (l: lightness($warning) + 20)))} 100%);
+    --backgroundSuccessAccent: linear-gradient(270deg, var(--success) 0%, #{hsla-str(hsla-new($success, (l: lightness($success) + 20)))} 100%);
+    --backgroundCriticalAccent: linear-gradient(270deg, var(--critical) 0%, #{hsla-str(hsla-new($critical, (l: lightness($critical) + 20)))} 100%);
+    --backgroundSystemAccent: linear-gradient(270deg, var(--system) 0%, #{hsla-str(hsla-new($system, (l: lightness($system) + 20)))} 100%);
+    --backgroundWarning: #{hsla-str($backgroundWarning)};
+    --backgroundSuccess: #{hsla-str($backgroundSuccess)};
+    --backgroundCritical: #{hsla-str($backgroundCritical)};
+    --backgroundSystem: #{hsla-str($backgroundSystem)};
+    --backgroundBrand: #{hsla-str($backgroundBrand)};
+
+    //BORDER
+    --borderBase: #{hsla-str($borderBase)};
+    --borderBaseHover: #{hsla-str($borderBaseHover)};
+    --borderSecondary: #{hsla-str($borderSecondary)};
+    --borderSecondaryHover: #{hsla-str($borderSecondaryHover)};
+    --borderPrimary: var(--brand);
+    --borderPrimaryHover: #{hsla-str($borderPrimaryHover)};
+    --borderWarning: var(--warning);
+    --borderWarningHover: #{hsla-str($borderWarningHover)};
+    --borderSuccess: var(--success);
+    --borderSuccessHover: #{hsla-str($borderSuccessHover)};
+    --borderCritical: var(--critical);
+    --borderCriticalHover: #{hsla-str($borderCriticalHover)};
+    --borderLinkInteractive: #{hsla-str($borderLinkInteractive)};
+    --borderLinkInteractiveHover: #{hsla-str($borderLinkInteractiveHover)};
+    --borderLinkBase: #{hsla-str($borderLinkBase)};
+    --borderLinkSecondary: #{hsla-str($borderLinkSecondary)};
+    --borderLinkSecondaryHover: #{hsla-str($borderLinkSecondaryHover)};
+
+    //INTERACTIVE
+    --controlBrandBackground: var(--brand);
+    --controlBrandBackgroundHover: #{hsla-str($controlBrandBackgroundHover)};
+    --controlBrandText: #{hsla-str($controlBrandText)};
+    --controlFlatSystemText: var(--system);
+    --controlFlatSystemTextHover: #{hsla-str($controlFlatSystemTextHover)};
+    --controlSecondaryBrandBackground: #{hsla-str($controlSecondaryBrandBackground)};
+    --controlSecondaryBrandBackgroundHover: #{ hsla-str($controlSecondaryBrandBackgroundHover)};
+    --controlSecondaryBrandText: #{hsla-str($controlSecondaryBrandText)};
+    --controlOutlineBorder: var(--borderBase);
+    --controlOutlineBorderHover: var(--borderBaseHover);
+    --controlOutlineText: var(--textLinkBase);
+    --controlOutlineBrandBorder: #{hsla-str($controlOutlineBrandBorder)};
+    --controlOutlineBrandBorderHover: var(--brand);
+    --controlOutlineBrandText: var(--brand);
+    --controlFlatBrandText: var(--brand);
+    --controlFlatBrandTextHover: #{hsla-str($controlFlatBrandTextHover)};
+    --controlCriticalBackground: #{hsla-str($controlCriticalBackground)};
+    --controlCriticalBackgroundHover: #{hsla-str($controlCriticalBackgroundHover)};
+    --controlCriticalText: #{hsla-str($controlCriticalText)};
+    --controlSuccessBackground: #{hsla-str($controlSuccessBackground)};
+    --controlSuccessBackgroundHover: #{hsla-str($controlSuccessBackgroundHover)};
+    --controlSuccessText: #{hsla-str($controlSuccessText)};
+    --controlWarningBackground: #{hsla-str($controlWarningBackground)};
+    --controlWarningBackgroundHover: #{hsla-str($controlWarningBackgroundHover)};
+    --controlWarningText: #{hsla-str($controlWarningText)};
+    --controlBaseBackground: #{hsla-str($controlBaseBackground)};
+    --controlBaseBackgroundHover: #{hsla-str($controlBaseBackgroundHover)};
+    --controlBaseText: #{hsla-str($controlBaseText)};
+    --controlBaseTextHover: var(--base);
+    --controlBaseTextActive: var(--base);
+
+    //INPUT
+    --inputBaseBackground: var(--surface);
+    --inputBaseBorder: #{hsla-str($inputBaseBorder)};
+    --inputBaseBorderHover: #{hsla-str($inputBaseBorderHover)};
+    --inputBaseBorderFocus: var(--interactive);
+    --inputBaseBorderError: var(--critical);
+    --inputBaseBorderErrorHover: #{hsla-str($inputBaseBorderErrorHover)};
+    --inputBaseText: #{hsla-str($inputBaseText)};
+    --inputBaseTextPlaceholder: #{hsla-str($inputBaseTextPlaceholder)};
+    --inputBaseTextHover: var(--base);
+    --inputBaseTextFocus: var(--base);
+    --inputBaseTextError: #{hsla-str($inputBaseTextError)};
+    --inputBaseError: #{$inputBaseError};
+    --inputBaseFocus: #{$inputBaseFocus};
+
+    //Shadow
+
+    --shadowBase: #{$shadowBase};
+    --shadowSuccess: #{$shadowSuccess};
+    --shadowWarning: #{$shadowWarning};
+    --shadowCritical: #{$shadowCritical};
+}

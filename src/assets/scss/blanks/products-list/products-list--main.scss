@@ -1,0 +1,40 @@
+.products-list {
+    &__title {
+        @include marginLevel(bottom, yellow);
+    }
+
+    &__group {
+        & + & {
+            @include marginLevel(top, pink);
+        }
+    }
+
+    &__item {
+        @media (max-width: $maxMobile) {
+            & + & {
+                @include marginLevel(top, yellow);
+            }
+        }
+    }
+
+    @media (min-width: $tablet) {
+        $cardOffset: 8;
+
+        &__wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: toRem(-$cardOffset);
+            margin-bottom: toRem(-$cardOffset);
+        }
+
+        &__item {
+            margin-right: toRem($cardOffset);
+            display: inline-block;
+            vertical-align: top;
+
+            @include marginLevel(bottom, yellow);
+
+            width: calc(50% - #{toRem($cardOffset)});
+        }
+    }
+}

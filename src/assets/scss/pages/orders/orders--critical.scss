@@ -1,0 +1,90 @@
+.orders {
+    @include paddingLevel(bottom, purple);
+
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $maxTablet) {
+        min-height: calc(100vh - #{$sidebarHeadHeight});
+    }
+
+    &__sorting {
+        @include marginLevel(bottom, green);
+        @include marginLevel(top, pink);
+
+        @media (max-width: $maxMobile) {
+            overflow-x: auto;
+            overflow-y: hidden;
+            margin-left: -5.555%;
+            margin-right: -5.555%;
+            padding-left: 5.555%;
+            padding-right: 5.555%;
+            padding-bottom: toRem(10);
+            margin-bottom: toRem(12 - 10);
+        }
+    }
+
+    &__input {
+        width: calc(100% - #{toRem(32 + 4)});
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__button {
+        margin-left: toRem(4);
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__order {
+        & + & {
+            @include marginLevel(top, green);
+        }
+    }
+
+    &__list {
+        @include marginLevel(bottom, blue);
+    }
+
+    &__bottom {
+        margin-top: auto;
+
+        @media (max-width: $maxMobile) {
+            text-align: center;
+        }
+    }
+
+    &__select {
+        @media (max-width: $maxMobile) {
+            display: none;
+        }
+    }
+
+    &__pagination {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    @media (min-width: $tablet) {
+        &__select {
+            width: toRem(170);
+            margin-left: toRem(4);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &__pagination {
+            width: calc(100% - #{toRem(170 + 4)});
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        &__filters {
+            &.is-active {
+                @include marginLevel(top, yellow);
+            }
+        }
+    }
+}

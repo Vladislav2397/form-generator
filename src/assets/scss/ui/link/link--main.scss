@@ -1,0 +1,77 @@
+.link {
+    span {
+        transition: 0.3s ease;
+        transition-property: color, border-color, opacity;
+    }
+
+    &::before,
+    &::after {
+        transition: 0.3s ease;
+        transition-property: color;
+    }
+
+    @media (min-width: $desktop) {
+        &:not(.is-disabled) {
+            &.link {
+                &--view {
+                    &-interactive {
+                        &:hover {
+                            span {
+                                color: var(--textLinkInteractiveHover);
+                            }
+
+                            &::before,
+                            &::after {
+                                color: var(--textLinkInteractiveHover);
+                            }
+
+                            &:not(.link--underline-none) {
+                                span {
+                                    border-color: var(--borderLinkInteractiveHover);
+                                }
+                            }
+                        }
+                    }
+
+                    &-base {
+                        &:hover {
+                            span {
+                                color: var(--textLinkInteractiveHover);
+                            }
+
+                            &::before,
+                            &::after {
+                                color: var(--textLinkInteractiveHover);
+                            }
+
+                            &:not(.link--underline-none) {
+                                span {
+                                    border-color: var(--borderLinkInteractiveHover);
+                                }
+                            }
+                        }
+                    }
+
+                    &-secondary {
+                        &:hover {
+                            span {
+                                color: var(--textLinkSecondaryHover);
+                            }
+
+                            &::before,
+                            &::after {
+                                color: var(--textLinkSecondaryHover);
+                            }
+
+                            &:not(.link--underline-none) {
+                                span {
+                                    border-color: var(--borderLinkSecondaryHover);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

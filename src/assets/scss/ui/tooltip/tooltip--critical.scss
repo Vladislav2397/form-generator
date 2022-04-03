@@ -1,0 +1,146 @@
+.tooltip {
+    $b: &;
+
+    position: relative;
+    font-size: 0;
+    cursor: pointer;
+
+    &__box {
+        position: absolute;
+        //top: calc(100% + #{toRem(10)});
+        //left: toRem(-6);
+        border-radius: toRem(8);
+        min-width: toRem(150);
+        min-height: toRem(50);
+        background: var(--backgroundSurface);
+        border: 1px solid var(--borderSecondary);
+        z-index: 10;
+
+        // Arrow
+        &::before {
+            content: '';
+            position: absolute;
+            width: toRem(8);
+            height: toRem(8);
+            box-sizing: border-box;
+            border-radius: 1px;
+            border: 1px solid var(--borderSecondary);
+            transform: rotate(45deg);
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+            background: inherit;
+        }
+
+        &--position {
+            &-bottom {
+                &-right {
+                    &::before {
+                        left: toRem(12);
+                        top: toRem(-4);
+                    }
+                }
+
+                &-center {
+                    &::before {
+                        left: 50%;
+                        top: toRem(-4);
+                        transform: rotate(45deg) translate(-30%, 30%);
+                    }
+                }
+
+                &-left {
+                    &::before {
+                        right: toRem(12);
+                        top: toRem(-4);
+                    }
+                }
+            }
+
+            &-right {
+                &-bottom {
+                    &::before {
+                        left: toRem(-4);
+                        top: toRem(12);
+                        transform: rotate(-45deg);
+                    }
+                }
+
+                &-center {
+                    &::before {
+                        left: toRem(-4);
+                        top: 50%;
+                        transform: rotate(-45deg) translate(30%, -30%);
+                    }
+                }
+
+                &-top {
+                    &::before {
+                        left: toRem(-4);
+                        bottom: toRem(12);
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+
+            &-top {
+                &-right {
+                    &::before {
+                        left: toRem(12);
+                        bottom: toRem(-4);
+                        transform: rotate(-45deg - 90deg);
+                    }
+                }
+
+                &-center {
+                    &::before {
+                        left: 50%;
+                        bottom: toRem(-4);
+                        transform: rotate(-45deg - 90deg) translate(30%, -30%);
+                    }
+                }
+
+                &-left {
+                    &::before {
+                        right: toRem(12);
+                        bottom: toRem(-4);
+                        transform: rotate(-45deg - 90deg);
+                    }
+                }
+            }
+
+            &-left {
+                &-bottom {
+                    &::before {
+                        right: toRem(-4);
+                        top: toRem(12);
+                        transform: rotate(45deg + 90deg);
+                    }
+                }
+
+                &-center {
+                    &::before {
+                        right: toRem(-4);
+                        top: 50%;
+                        transform: rotate(45deg + 90deg) translate(-30%, 30%);
+                    }
+                }
+
+                &-top {
+                    &::before {
+                        right: toRem(-4);
+                        bottom: toRem(12);
+                        transform: rotate(45deg + 90deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// TODO: Move out
+#portal {
+    z-index: 15;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

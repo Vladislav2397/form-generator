@@ -1,0 +1,54 @@
+.card-details {
+    position: relative;
+
+    &__title {
+        @include marginLevel(bottom, orange);
+
+        padding: toRem(4) 0;
+    }
+
+    &__icon {
+        position: absolute;
+        top: toRem(12);
+        right: toRem(12);
+    }
+
+    &__item {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: toRem(12);
+        margin-bottom: toRem(12);
+
+        @include fontSize(p5);
+
+        p {
+            @include mono-space;
+
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: toRem(6);
+        }
+
+        span {
+            color: var(--textSecondary);
+            display: block;
+        }
+
+        button {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        > * + * {
+            @include marginLevel(top,red);
+        }
+
+        &--skeleton {
+            min-width: toRem(100);
+        }
+    }
+
+    &__list {
+        margin-bottom: toRem(-12);
+    }
+}

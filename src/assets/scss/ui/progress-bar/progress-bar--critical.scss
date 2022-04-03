@@ -1,0 +1,182 @@
+.progress-bar {
+    min-width: toRem(280);
+
+    &__count {
+        padding-right: toRem(12);
+        display: inline-block;
+        vertical-align: middle;
+        width: toRem(90);
+        box-sizing: border-box;
+
+        @include fontSize(p4);
+
+        @media (max-width: $maxMobileLate) {
+            display: none;
+        }
+    }
+
+    &__names {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - #{toRem(90)});
+
+        @include fontSize(p4);
+    }
+
+    &__name {
+        @include ellipsis;
+    }
+
+    &__description {
+        @include marginLevel(bottom, yellow);
+
+        font-size: 0;
+    }
+
+    &__steps {
+        font-size: 0;
+        white-space: nowrap;
+    }
+
+    &__step {
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        background-color: var(--backgroundBase);
+        display: inline-block;
+        width: 100%;
+
+        & + & {
+            margin-left: toRem(4);
+        }
+
+        &.is-active {
+            //animated left instead transform because bug in Safari with overflow for parent width animated child transform
+            &::before {
+                will-change: left;
+                animation: mov-strips 1.5s infinite linear;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--borderSecondary);
+            box-sizing: border-box;
+        }
+
+        &::before {
+            position: absolute;
+            content: '';
+            left: toRem(-22);
+            right: 1px;
+            width: calc(100% + #{toRem(22)});
+            top: 1px;
+            bottom: 1px;
+            background:
+                repeating-linear-gradient(
+                    -38deg,
+                    var(--backgroundBase),
+                    var(--backgroundBase) toRem(8),
+                    var(--borderSecondary) toRem(8),
+                    var(--borderSecondary) toRem(14)
+                );
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            z-index: 1;
+            min-width: toRem(12);
+        }
+    }
+
+    &--size {
+        &-s {
+            $height: 4;
+
+            .progress-bar {
+                &__step {
+                    height: toRem($height);
+                    border-radius: toRem($height/2);
+
+                    &::after,
+                    span {
+                        border-radius: toRem($height/2);
+                    }
+                }
+            }
+        }
+
+        &-m {
+            $height: 8;
+
+            .progress-bar {
+                &__step {
+                    height: toRem($height);
+                    border-radius: toRem($height/2);
+
+                    &::after,
+                    span {
+                        border-radius: toRem($height/2);
+                    }
+                }
+            }
+        }
+
+        &-l {
+            $height: 12;
+
+            .progress-bar {
+                &__step {
+                    height: toRem($height);
+                    border-radius: toRem($height/2);
+
+                    &::after,
+                    span {
+                        border-radius: toRem($height/2);
+                    }
+                }
+            }
+        }
+    }
+
+    &--view {
+        &-brand {
+            span {
+                background-color: var(--backgroundBrand);
+                border-color: var(--borderPrimary);
+            }
+        }
+
+        &-system {
+            span {
+                background-color: var(--backgroundSystem);
+                border-color: var(--borderBase);
+            }
+        }
+
+        &-success {
+            span {
+                background-color: var(--backgroundSuccess);
+                border-color: var(--borderSuccess);
+            }
+        }
+
+        &-critical {
+            span {
+                background-color: var(--backgroundCritical);
+                border-color: var(--borderCritical);
+            }
+        }
+    }
+}

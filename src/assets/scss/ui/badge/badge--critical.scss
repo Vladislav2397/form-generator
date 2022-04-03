@@ -1,0 +1,51 @@
+.badge {
+    border-radius: $radiusButton;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+
+    &--skeleton {
+        width: toRem(50);
+    }
+
+    &__indicator {
+        position: absolute;
+        left: toRem(6);
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
+    &--size {
+        &-m {
+            padding: toRem(2) toRem(6);
+
+            @include fontSize(p5);
+        }
+    }
+
+    &--view {
+        &-success {
+            background-color: var(--backgroundSuccess);
+            color: var(--textSuccess);
+        }
+
+        &-critical {
+            background-color: var(--backgroundCritical);
+            color: var(--textCritical);
+        }
+
+        &-warning {
+            background-color: var(--backgroundWarning);
+            color: var(--textWarning);
+        }
+
+        &-system {
+            background-color: var(--backgroundSystem);
+            color: var(--textSecondary);
+        }
+    }
+
+    &--indicator {
+        padding-left: toRem(6 + 4 + 8);
+    }
+}

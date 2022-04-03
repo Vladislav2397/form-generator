@@ -1,0 +1,50 @@
+.sign-documents {
+    @include paddingLevel(vertical, pink);
+
+    &__document {
+        & + & {
+            @include marginLevel(top, yellow);
+        }
+    }
+
+    &__actions {
+        @include marginLevel(bottom, pink);
+    }
+
+    &__label {
+        color: var(--textSecondary);
+
+        @include fontSize(p5);
+        @include marginLevel(bottom, blue);
+    }
+
+    &__card {
+        @include marginLevel(bottom, pink);
+    }
+
+    @media (max-width: $maxMobileLate) {
+        &__button {
+            @include marginLevel(top, green);
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        &__actions {
+            display: table;
+
+            & > * {
+                display: table-cell;
+                vertical-align: top;
+            }
+        }
+
+        &__select {
+            width: 100%;
+        }
+
+        &__button {
+            margin-left: toRem(8);
+            white-space: nowrap;
+        }
+    }
+}

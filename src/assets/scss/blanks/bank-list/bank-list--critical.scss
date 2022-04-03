@@ -1,0 +1,7 @@
+.bank-list {
+    &__card {
+        & + & {
+            @include marginLevel(top, yellow);
+        }
+    }
+}

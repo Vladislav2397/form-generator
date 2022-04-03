@@ -1,0 +1,13 @@
+.hint {
+    transition: opacity 0.3s ease;
+
+    &.is-active {
+        opacity: 1;
+    }
+
+    @media (min-width: $desktop) {
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

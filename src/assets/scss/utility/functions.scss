@@ -1,0 +1,422 @@
+@import '../utility/vars/spaces';
+
+@mixin newFont($family,$pathName,$weight, $style: normal) {
+    @font-face {
+        font-family: '#{$family}';
+        src: url('/fonts/#{$pathName}.woff2') format('woff2'), url('/fonts/#{$pathName}.woff') format('woff');
+        font-weight: #{$weight};
+        font-style: $style;
+        font-display: swap;
+    }
+}
+
+@function hsla-str($color) {
+    @return unquote('hsla(#{hue($color)/1deg}, #{saturation($color)}, #{lightness($color)}, #{alpha($color)})');
+}
+
+@function hsla-new($color, $options) {
+    $newL: lightness($color);
+    $newA: alpha($color);
+
+    @if (map-get($options, 'l')) {
+        $newL: map-get($options, 'l');
+    }
+
+    @if (map-get($options, 'a')) {
+        $newA: map-get($options, 'a');
+    }
+
+    @return hsla(hue($color)/1deg, saturation($color), $newL, $newA);
+}
+
+@function toRem($size) {
+    $remSize: $size / 12 * 1rem;
+
+    @return $remSize;
+}
+
+@function freezeRem($size) {
+    $newSize: $size * 1.2 * 1px;
+
+    @return $newSize;
+}
+
+@mixin getIcon($name) {
+    content: map-get($icons, $name);
+}
+
+@mixin iconsModify() {
+    @each $name, $glyph in $icons {
+        &--#{$name} {
+            &::before {
+                content: $glyph;
+            }
+        }
+    }
+}
+
+@mixin getPositionStyle($style, $direction, $value) {
+    @if $direction == $style {
+        #{ $direction }: $value;
+    }
+
+    @else if $direction == vertical {
+        $styleNameTop: #{ $style } + '-top';
+        $styleNameBottom: #{ $style } + '-bottom';
+
+        #{$styleNameTop}: $value;
+        #{$styleNameBottom}: $value;
+    }
+
+    @else if $direction == horizontal {
+
+        $styleNameLeft: #{ $style } + '-left';
+        $styleNameRight: #{ $style } + '-right';
+
+        #{$styleNameLeft}: $value;
+        #{$styleNameRight}: $value;
+        #{ $style }: 0 $value;
+    }
+
+    @else if $direction == both {
+        #{ $style }: $value;
+    }
+
+    @else {
+        $styleName: #{ $style } + '-' + #{ $direction };
+
+        #{ $styleName }: #{$value};
+    }
+}
+
+@mixin marginLevel($direction, $color, $sign: plus) {
+    $styleName: margin;
+
+    @each $spaceLevel, $pixels in $spaces {
+        @if $spaceLevel == $color {
+            @if (length(map-get($spaces, $spaceLevel)) == 1) {
+                $value: nth(map-get($spaces, $spaceLevel), 1);
+
+                @if ($sign = minus) {
+                    $value: -#{$value};
+                }
+
+                @include getPositionStyle($styleName, $direction, $value);
+            }
+
+            @else {
+                @if (nth(map-get($spaces, $spaceLevel), 1) == nth(map-get($spaces, $spaceLevel), 2)) {
+                    @media (max-width: $maxTablet) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 1);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $desktop) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 3);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+                }
+
+                @else if(nth(map-get($spaces, $spaceLevel), 2) == nth(map-get($spaces, $spaceLevel), 3)) {
+                    @media (max-width: $maxMobile) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 1);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $tablet) and (max-width: $maxTablet) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 2);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+                }
+
+                @else {
+                    @media (max-width: $maxMobile) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 1);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $tablet) and (max-width: $maxTablet) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 2);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $desktop) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 3);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin paddingLevel($direction,$color) {
+    @each $spaceLevel, $pixels in $spaces {
+        @if $spaceLevel == $color {
+            @if (length(map-get($spaces, $spaceLevel)) == 1) {
+                $value: nth(map-get($spaces, $spaceLevel), 1);
+
+                @include getPositionStyle(padding, $direction, $value);
+            }
+
+            @else {
+                @if (nth(map-get($spaces, $spaceLevel), 1) == nth(map-get($spaces, $spaceLevel), 2)) {
+                    @media (max-width: $maxTablet) {
+                        $value: nth(map-get($spaces, $spaceLevel), 1);
+
+                        @include getPositionStyle(padding, $direction, $value);
+                    }
+
+                    @media (min-width: $desktop) {
+                        $value: nth(map-get($spaces, $spaceLevel), 3);
+
+                        @include getPositionStyle(padding, $direction, $value);
+                    }
+                }
+
+                @else if(nth(map-get($spaces, $spaceLevel), 2) == nth(map-get($spaces, $spaceLevel), 3)) {
+                    @media (max-width: $maxMobile) {
+                        $value: nth(map-get($spaces, $spaceLevel), 1);
+
+                        @include getPositionStyle(padding, $direction, $value);
+                    }
+
+                    @media (min-width: $tablet) and (max-width: $maxTablet) {
+                        $value: nth(map-get($spaces, $spaceLevel), 2);
+
+                        @include getPositionStyle(padding, $direction, $value);
+                    }
+                }
+
+                @else {
+                    @media (max-width: $maxMobile) {
+                        $value: nth(map-get($spaces, $spaceLevel), 1);
+
+                        @include getPositionStyle(padding, $direction, $value);
+                    }
+
+                    @media (min-width: $tablet) and (max-width: $maxTablet) {
+                        $value: nth(map-get($spaces, $spaceLevel), 2);
+
+                        @include getPositionStyle(padding, $direction, $value);
+                    }
+
+                    @media (min-width: $desktop) {
+                        $value: nth(map-get($spaces, $spaceLevel), 3);
+
+                        @include getPositionStyle(padding, $direction, $value);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin positionLevel($direction,$color,$sign: plus) {
+    $styleName: $direction;
+
+    @each $spaceLevel, $pixels in $spaces {
+        @if $spaceLevel == $color {
+            @if (length(map-get($spaces, $spaceLevel)) == 1) {
+                $value: nth(map-get($spaces, $spaceLevel), 1);
+
+                @if ($sign == minus) {
+                    $value: -#{$value};
+                }
+
+                @include getPositionStyle($styleName, $direction, $value);
+            }
+
+            @else {
+                @if (nth(map-get($spaces, $spaceLevel), 1) == nth(map-get($spaces, $spaceLevel), 2)) {
+                    @media (max-width: $maxTablet) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 1);
+
+                        @if ($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $desktop) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 3);
+
+                        @if($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+                }
+
+                @else if(nth(map-get($spaces, $spaceLevel), 2) == nth(map-get($spaces, $spaceLevel), 3)) {
+                    @media (max-width: $maxMobile) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 1);
+
+                        @if ($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $tablet) and (max-width: $maxTablet) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 2);
+
+                        @if ($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+                }
+
+                @else {
+                    @media (max-width: $maxMobile) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 1);
+
+                        @if ($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $tablet) and (max-width: $maxTablet) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 2);
+
+                        @if ($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+
+                    @media (min-width: $desktop) {
+                        $value:  nth(map-get($spaces, $spaceLevel), 3);
+
+                        @if ($sign == minus) {
+                            $value: -#{$value};
+                        }
+
+                        @include getPositionStyle($styleName, $direction, $value);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin fontSize($name, $options:()) {
+    @each $tagName, $tagValue in $tags {
+        @if $tagName == $name {
+
+            $selectedTag: map-get($tags, $tagName);
+            $fontSize: nth($selectedTag, 1);
+            $lineHeight: nth($selectedTag, 2);
+
+            font-size: $fontSize;
+            line-height: $lineHeight;
+
+            @if map-get($options, weight) {
+                font-weight: #{map-get($options, weight)};
+            }
+
+            @if map-get($options, style) {
+                font-style: map-get($options, style);
+            }
+
+            @if map-get($options, mono) {
+                @include mono-space;
+            }
+        }
+    }
+}
+
+@mixin center($position:'both') {
+    position: absolute;
+
+    @if $position == 'vertical' {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @else if $position == 'horizontal' {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @else if $position == 'both' {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@function to-unit($value) {
+    @if type-of($value) != 'string' {
+        @error 'Value for `to-unit` should be a string.';
+    }
+
+    $units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
+    $parsed-unit: false;
+
+    @each $unit in $units {
+        @if (str-index($value, nth($unit, 1))) {
+            $parsed-unit: nth($unit, 2);
+        }
+    }
+
+    @if (not $parsed-unit) {
+        @error 'Invalid unit `#{$value}`.';
+    }
+
+    @return $parsed-unit;
+}
+
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+@mixin mono-space {
+    font-feature-settings: 'tnum' on, 'lnum' on;
+}

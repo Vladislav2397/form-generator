@@ -1,0 +1,26 @@
+.logo {
+    font-size: 0;
+
+    &__wrapper {
+        width: auto;
+        height: 100%;
+    }
+
+    &--view {
+        &-base {
+            .logo {
+                &__round {
+                    fill: #0f8;
+                }
+
+                &__word {
+                    fill: #21242c;
+
+                    &--secondary {
+                        fill: #8a92a8;
+                    }
+                }
+            }
+        }
+    }
+}

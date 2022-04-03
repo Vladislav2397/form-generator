@@ -1,0 +1,6 @@
+.card-text {
+    &__content {
+        @include marginLevel(top,red);
+        @include fontSize(p5);
+    }
+}

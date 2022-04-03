@@ -1,0 +1,5 @@
+export type LinkTag = 'router-link' | 'a' | 'button' | 'p'
+export type LinkSize = 's' | 'm' | 'l' | 'inherit'
+export type LinkUnderline = 'solid' | 'dashed' | 'none'
+export type LinkView = 'interactive' | 'base' | 'secondary'
+export type LinkIconPosition = 'left' | 'right'

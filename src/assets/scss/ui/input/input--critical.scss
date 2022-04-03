@@ -1,0 +1,30 @@
+.input {
+    &__datepicker {
+        position: absolute !important;
+        z-index: 1;
+
+        &--position {
+            &-horizontal {
+                &-left {
+                    left: 0;
+                }
+
+                &-right {
+                    right: 0;
+                }
+            }
+
+            &-vertical {
+                &-top {
+                    bottom: 100%;
+                    margin-bottom: toRem(8);
+                }
+
+                &-bottom {
+                    top: 100%;
+                    margin-top: toRem(8);
+                }
+            }
+        }
+    }
+}

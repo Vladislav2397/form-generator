@@ -1,0 +1,9 @@
+.collapse {
+    &__wrapper {
+        transition: 0.5s ease max-height;
+    }
+
+    &__icon {
+        transition: transform ease 0.18s;
+    }
+}

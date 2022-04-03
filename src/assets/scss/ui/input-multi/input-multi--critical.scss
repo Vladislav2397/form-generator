@@ -1,0 +1,49 @@
+.input-multi {
+    &__text {
+        color: var(--inputBaseText);
+
+        @include fontSize(p5);
+
+        &--label {
+            margin-bottom: toRem(4);
+        }
+
+        &--description {
+            margin-top: toRem(4);
+        }
+
+        &--error {
+            height: 0;
+            margin-top: 0;
+            opacity: 0;
+            color: var(--inputBaseTextError);
+        }
+    }
+
+    &__content {
+        position: relative;
+    }
+
+    &__value {
+        $offset: toRem(3);
+
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: $offset;
+        width: calc(50% - #{$offset});
+        min-width: auto;
+
+        & + & {
+            margin-left: $offset;
+            margin-right: 0;
+        }
+    }
+
+    &__datepicker {
+        position: absolute !important;
+        top: 100%;
+        margin-top: toRem(8);
+        z-index: 1;
+        left: 0;
+    }
+}

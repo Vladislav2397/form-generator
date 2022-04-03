@@ -1,0 +1,23 @@
+.card-radio {
+    cursor: pointer;
+
+    &__value {
+        cursor: pointer;
+    }
+
+    @media (min-width: $desktop) {
+        &:hover {
+            .radio-toggle {
+                border-color: var(--borderBaseHover);
+
+                &.is-checked {
+                    border-color: var(--controlBrandBackgroundHover);
+
+                    span {
+                        background-color: var(--controlBrandBackgroundHover);
+                    }
+                }
+            }
+        }
+    }
+}

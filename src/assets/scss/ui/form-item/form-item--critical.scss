@@ -1,0 +1,392 @@
+.form-item {
+    min-width: toRem(170);
+    position: relative;
+    white-space: normal;
+
+    $b: &;
+
+    &--view {
+        &-base {
+            #{$b} {
+                &__element {
+                    background-color: var(--inputBaseBackground);
+                    border: 1px solid var(--inputBaseBorder);
+                }
+            }
+        }
+
+        &-flat {
+            #{$b} {
+                &__element {
+                    background: none;
+                }
+            }
+        }
+    }
+
+    &__text {
+        @include fontSize(p5);
+
+        color: var(--inputBaseText);
+
+        &--label {
+            margin-bottom: toRem(4);
+        }
+
+        &--description {
+            margin-top: toRem(4);
+        }
+
+        &--error {
+            color: var(--inputBaseTextError);
+            height: toRem(16);
+            overflow: hidden;
+        }
+    }
+
+    &__content {
+        position: relative;
+    }
+
+    &__icon {
+        @include center(vertical);
+
+        &::before {
+            font-size: toRem(16);
+            color: var(--inputBaseTextPlaceholder);
+        }
+
+        &--left {
+            left: 0;
+        }
+
+        &--right {
+            right: 0;
+        }
+    }
+
+    &__preloader {
+        @include center(vertical);
+
+        right: 0;
+        color: var(--inputBaseTextPlaceholder);
+    }
+
+    &__value {
+        @include center(vertical);
+
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    &__tags {
+        max-width: 100%;
+        white-space: nowrap;
+    }
+
+    &__tag {
+        @include ellipsis;
+
+        & + & {
+            margin-left: toRem(4);
+        }
+    }
+
+    &__placeholder {
+        @include ellipsis;
+
+        box-sizing: border-box;
+    }
+
+    &__append {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__element {
+        box-sizing: border-box;
+        box-shadow: 0 0 0 toRem(2) transparent;
+        color: var(--inputBaseTextHover);
+
+        &::placeholder {
+            color: var(--inputBaseTextPlaceholder);
+        }
+
+        @include ellipsis;
+    }
+
+    &.is-disabled {
+        opacity: 0.6;
+    }
+
+    &:not(.form-item--view-flat) {
+        #{$b} {
+            &__element {
+                border-radius: $radiusButton;
+            }
+        }
+        &#{$b} {
+            &--size {
+                &-s {
+                    #{$b} {
+                        &__element {
+                            padding: 0 toRem(6);
+                        }
+
+                        &__value {
+                            padding: 0 toRem(6);
+                        }
+
+                        &__icon {
+                            &--left {
+                                left: toRem(6);
+                            }
+
+                            &--right {
+                                right: toRem(6);
+                            }
+                        }
+
+                        &__preloader {
+                            right: toRem(6);
+                        }
+                    }
+
+                    &#{$b} {
+                        &--icon {
+                            &-left {
+                                #{$b} {
+                                    &__element,
+                                    &__value {
+                                        padding-left: toRem(26);
+                                    }
+                                }
+                            }
+
+                            &-right {
+                                #{$b} {
+                                    &__element,
+                                    &__value {
+                                        padding-right: toRem(26);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-m {
+                    #{$b} {
+                        &__element {
+                            padding: 0 toRem(8);
+                        }
+
+                        &__value {
+                            padding: 0 toRem(8);
+                        }
+
+                        &__icon {
+                            &--left {
+                                left: toRem(8);
+                            }
+
+                            &--right {
+                                right: toRem(8);
+                            }
+                        }
+
+                        &__preloader {
+                            right: toRem(8);
+                        }
+                    }
+
+                    &#{$b} {
+                        &--icon {
+                            &-left {
+                                #{$b} {
+                                    &__element,
+                                    &__value {
+                                        padding-left: toRem(28);
+                                    }
+                                }
+                            }
+
+                            &-right {
+                                #{$b} {
+                                    &__element,
+                                    &__value {
+                                        padding-right: toRem(28);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-l {
+                    #{$b} {
+                        &__element {
+                            padding: 0 toRem(10);
+                        }
+
+                        &__value {
+                            padding: 0 toRem(10);
+                        }
+
+                        &__icon {
+                            &--left {
+                                left: toRem(10);
+                            }
+
+                            &--right {
+                                right: toRem(10);
+                            }
+                        }
+
+                        &__preloader {
+                            right: toRem(10);
+                        }
+                    }
+
+                    &#{$b} {
+                        &--icon {
+                            &-left {
+                                #{$b} {
+                                    &__element,
+                                    &__value {
+                                        padding-left: toRem(30);
+                                    }
+                                }
+                            }
+
+                            &-right {
+                                #{$b} {
+                                    &__element,
+                                    &__value {
+                                        padding-right: toRem(30);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &--size {
+        &-s {
+            #{$b} {
+                &__element {
+                    height: toRem(24);
+
+                    @include fontSize(p5);
+
+                    line-height: toRem(24);
+                }
+
+                &__placeholder {
+                    @include fontSize(p5);
+                }
+            }
+
+            &#{$b} {
+                &--icon {
+                    &-left {
+                        #{$b} {
+                            &__element,
+                            &__value {
+                                padding-left: toRem(20);
+                            }
+                        }
+                    }
+
+                    &-right {
+                        #{$b} {
+                            &__element,
+                            &__value {
+                                padding-right: toRem(20);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &-m {
+            #{$b} {
+                &__element {
+                    height: toRem(32);
+
+                    @include fontSize(p4);
+
+                    line-height: toRem(32);
+                }
+
+                &__placeholder {
+                    @include fontSize(p4);
+                }
+            }
+
+            &#{$b} {
+                &--icon {
+                    &-left {
+                        #{$b} {
+                            &__element,
+                            &__value {
+                                padding-left: toRem(20);
+                            }
+                        }
+                    }
+
+                    &-right {
+                        #{$b} {
+                            &__element,
+                            &__value {
+                                padding-right: toRem(20);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &-l {
+            #{$b} {
+                &__element {
+                    height: toRem(40);
+
+                    @include fontSize(p4);
+
+                    line-height: toRem(40);
+                }
+
+                &__placeholder {
+                    @include fontSize(p4);
+                }
+            }
+            &#{$b} {
+                &--icon {
+                    &-left {
+                        #{$b} {
+                            &__element,
+                            &__value {
+                                padding-left: toRem(20);
+                            }
+                        }
+                    }
+
+                    &-right {
+                        #{$b} {
+                            &__element,
+                            &__value {
+                                padding-right: toRem(20);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

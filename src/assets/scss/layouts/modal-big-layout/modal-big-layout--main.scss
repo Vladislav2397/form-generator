@@ -1,0 +1,5 @@
+.modal-big-layout {
+    &__steps {
+        @include marginLevel(top, blue);
+    }
+}

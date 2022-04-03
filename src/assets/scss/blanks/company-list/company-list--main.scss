@@ -1,0 +1,35 @@
+.company-list {
+    &__input {
+        @include marginLevel(bottom, pink);
+    }
+
+    &__button {
+        width: 100%;
+
+        @include marginLevel(bottom, yellow);
+    }
+
+    &__card {
+        width: 100%;
+    }
+
+    &__item {
+        @include marginLevel(bottom, yellow);
+
+        width: 100%;
+    }
+
+    &__response {
+        margin: 0 auto;
+
+        @include marginLevel(top, cobalt);
+        //
+        //&.fade-enter-active {
+        //    transition-delay: 0.3s;
+        //}
+    }
+
+    &__content {
+        position: relative;
+    }
+}

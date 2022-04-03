@@ -1,0 +1,7 @@
+.head-modal {
+    &__progress {
+        & + .head-modal__button {
+            @include marginLevel(top, green);
+        }
+    }
+}

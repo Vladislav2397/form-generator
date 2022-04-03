@@ -1,0 +1,6 @@
+.orders {
+    &__filters {
+        transition: 0.3s ease;
+        transition-property: height, margin-top;
+    }
+}

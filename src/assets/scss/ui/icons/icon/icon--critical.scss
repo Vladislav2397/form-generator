@@ -1,0 +1,51 @@
+.icon {
+    border: 1px solid var(--borderBase);
+    background-color: var(--backgroundBase);
+    box-sizing: border-box;
+    position: relative;
+    border-radius: $radiusButton;
+
+    &__image {
+        @include center(both);
+
+        font-size: 0;
+    }
+
+    &--size {
+        &-s {
+            width: toRem(24);
+            height: toRem(24);
+
+            .icon {
+                &__image {
+                    width: toRem(16);
+                    height: toRem(16);
+                }
+            }
+        }
+
+        &-m {
+            width: toRem(32);
+            height: toRem(32);
+
+            .icon {
+                &__image {
+                    width: toRem(16);
+                    height: toRem(16);
+                }
+            }
+        }
+
+        &-l {
+            width: toRem(40);
+            height: toRem(40);
+
+            .icon {
+                &__image {
+                    width: toRem(20);
+                    height: toRem(20);
+                }
+            }
+        }
+    }
+}

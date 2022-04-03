@@ -1,0 +1,32 @@
+.button-hamburger {
+    cursor: pointer;
+
+    span {
+        transition: 0.3s ease;
+        transition-property: opacity, transform, background-color;
+    }
+
+    &.is-active {
+        span {
+            &:nth-child(1) {
+                transform: translate(-50%, -50%) translateY(0) rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(3) {
+                transform: translate(-50%, -50%) translateY(0) rotate(-45deg);
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &:hover {
+            span {
+                background-color: var(--controlFlatSystemTextHover);
+            }
+        }
+    }
+}

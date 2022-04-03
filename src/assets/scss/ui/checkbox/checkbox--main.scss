@@ -1,0 +1,33 @@
+.checkbox {
+    cursor: pointer;
+
+    &__content {
+        transition: 0.3s ease;
+        transition-property: border-color, background-color;
+    }
+
+    &__icon {
+        transition: opacity 0.3s ease;
+    }
+
+    @media (min-width: $desktop) {
+        &:hover {
+            .checkbox {
+                &__content {
+                    border-color: var(--borderBaseHover);
+                }
+
+                &__value {
+                    &:checked {
+                        & + .checkbox {
+                            &__content {
+                                border-color: var(--controlBrandBackgroundHover);
+                                background-color: var(--controlBrandBackgroundHover);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

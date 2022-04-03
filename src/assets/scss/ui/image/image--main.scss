@@ -1,0 +1,21 @@
+.image {
+    .ls-blur-up-is-loading {
+        opacity: 0;
+    }
+
+    .ls-blur-up-img {
+        transition: 0.6s ease;
+        transition-property: opacity;
+        opacity: 0;
+
+        &.ls-blur-up-loaded {
+            opacity: 1;
+        }
+    }
+
+    &.lazyloaded {
+        .ls-original-loaded {
+            opacity: 0;
+        }
+    }
+}

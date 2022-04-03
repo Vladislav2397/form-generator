@@ -1,0 +1,38 @@
+.auth-recovery {
+    box-sizing: border-box;
+
+    &__title {
+        @include marginLevel(bottom, green);
+    }
+
+    &__breadcrumb {
+        @include marginLevel(bottom, blue);
+    }
+
+    &__button {
+        width: 100%;
+    }
+
+    &__description {
+        @include fontSize(p4);
+        @include marginLevel(bottom, green);
+    }
+
+    &__input {
+        @include marginLevel(bottom, blue);
+    }
+
+    &__container {
+        @media (max-width: $maxMobileLate) {
+            max-width: toRem(400);
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        min-height: toRem(275);
+    }
+
+    @media (min-width: $desktop) {
+        min-height: toRem(254);
+    }
+}

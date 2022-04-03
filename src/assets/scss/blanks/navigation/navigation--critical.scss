@@ -1,0 +1,121 @@
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zIndexSidebar;
+
+    &__button {
+        &--hamburger {
+            display: inline-block;
+            vertical-align: middle;
+
+            @media (max-width: $maxMobile) {
+                margin-right: toRem(4);
+            }
+        }
+
+        &--log-out {
+            right: $containerPaddingMobile;
+
+            @media (max-width: $maxTablet) {
+                @include center(vertical);
+            }
+        }
+    }
+
+    &__logo {
+        height: toRem(32);
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__head {
+        background-color: var(--backgroundSurface);
+        width: 100%;
+        position: relative;
+        z-index: 2;
+
+        @include paddingLevel(vertical, green);
+
+        max-width: none;
+
+        @media (max-width: $maxTablet) {
+            border-bottom: 1px solid var(--borderBase);
+        }
+    }
+
+    &__wrapper {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        padding: toRem(56 + 20) $containerPaddingMobile toRem(62 + 20);
+        left: 0;
+        top: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        background-color: var(--backgroundSurface);
+    }
+
+    &__link {
+        &--menu {
+            & + & {
+                @include marginLevel(top, orange);
+            }
+        }
+    }
+
+    &__menu {
+        @include paddingLevel(bottom, blue);
+
+        & + & {
+            @include paddingLevel(top, blue);
+        }
+    }
+
+    @media (min-width: $tablet) {
+        &__wrapper {
+            width: $sidebarWidthS;
+            padding-left: 0;
+            padding-right: toRem(12);
+
+            @media (max-width: $maxTablet) {
+                border-right: 1px solid var(--borderSecondary);
+            }
+        }
+
+        &__button {
+            &--hamburger {
+                @include center(vertical);
+
+                left: 1.2%;
+            }
+        }
+
+        &__bottom {
+            padding-left: toRem(20);
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__head {
+            @include paddingLevel(top, blue);
+            @include paddingLevel(bottom, cobalt);
+
+            padding-left: toRem(20);
+            padding-right: 0;
+        }
+
+        &__wrapper {
+            width: 100%;
+            position: absolute;
+            padding-top: toRem(76);
+        }
+
+        &__button {
+            position: absolute;
+            right: toRem(12);
+
+            @include positionLevel(bottom, cobalt);
+        }
+    }
+}

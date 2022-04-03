@@ -1,0 +1,106 @@
+@import '../../utility/functions.scss';
+
+$base:        hsla(224deg, 15%, 15%, 100%);
+$system:      hsla(224deg, 15%, 65%, 100%);
+$surface:     hsla(0deg, 0%, 100%, 100%);
+$background:  hsla(220deg, 20%, 96%, 100%);
+$brand:       hsla(220deg, 100%, 50%, 100%);
+$interactive: hsla(220deg, 100%, 50%, 100%);
+$critical:    hsla(5deg, 80%, 65%, 100%);
+$success:     hsla(100deg, 55%, 50%, 100%);
+$warning:     hsla(35deg, 100%, 65%, 100%);
+
+//TEXT
+$textBase:               $base; //in native
+$textSecondary:          hsla-new($base, (l: lightness($base) + 45));
+$textBrand:              $brand; //in native
+$textSuccess:            hsla-new($success, (l: lightness($success) - 15));
+$textWarning:            hsla-new($warning, (l: lightness($warning) - 15));
+$textCritical:           hsla-new($critical, (l: lightness($critical) - 15));
+$textLinkInteractive:    $interactive; //in native
+$textLinkInteractiveHover: hsla-new($interactive, (l: lightness($interactive) - 15));
+$textLinkSecondary:      hsla-new($base, (l: lightness($base) + 45));
+$textLinkSecondaryHover: hsla-new($base, (l: lightness($base) + 30));
+$textBaseAccent:         linear-gradient(90deg, $base 0%, hsla-new($base, (a: 0.5)) 100%); //in native
+$textSecondaryAccent:    linear-gradient(90deg, hsla-new($base, (l: lightness($base) + 45)) 0%, hsla-new($base, (l: lightness($base) + 45, a: 0.5)) 100%); // in native
+$textBrandAccent:        linear-gradient(90deg, $brand 0%, hsla-new($brand, (a: 0.5)) 100%); // in native
+$textLinkBase:           $base; //in native
+
+//BACKGROUND
+$backgroundBase:           $background; //in native
+$backgroundSurface:        $surface; //in native
+$backgroundOverlayPage:    hsla-new($background, (l: lightness($background) - 61, a: 0.85));
+$backgroundBrandAccent:    linear-gradient(270deg, $brand 0%, hsla-new($brand, (l: lightness($brand) + 20)) 100%); //in native
+$backgroundWarningAccent:  linear-gradient(270deg, $warning 0%, hsla-new($warning, (l: lightness($warning) + 20)) 100%); //in native
+$backgroundSuccessAccent:  linear-gradient(270deg, $success 0%, hsla-new($success, (l: lightness($success) + 20)) 100%); //in native
+$backgroundCriticalAccent: linear-gradient(270deg, $critical 0%, hsla-new($critical, (l: lightness($critical) + 20)) 100%); //in native
+$backgroundSystemAccent:   linear-gradient(270deg, $system 0%, hsla-new($system, (l: lightness($system) + 20)) 100%); //in native
+$backgroundWarning:        hsla-new($warning, (a: 0.2));
+$backgroundSuccess:        hsla-new($success, (a: 0.2));
+$backgroundCritical:       hsla-new($critical, (a: 0.2));
+$backgroundSystem:         hsla-new($system, (a: 0.2));
+$backgroundBrand:         hsla-new($brand, (a: 0.2));
+
+//BORDER
+$borderBase:           hsla-new($background, (l: lightness($background) - 16));
+$borderBaseHover:      hsla-new($background, (l: lightness($background) - 36));
+$borderSecondary:      hsla-new($background, (l: lightness($background) - 6));
+$borderSecondaryHover: hsla-new($background, (l: lightness($background) - 26));
+$borderPrimary:        $brand; //in native
+$borderPrimaryHover:   hsla-new($brand, (l: lightness($brand) - 20));
+$borderWarning:        $warning; //in native
+$borderWarningHover:   hsla-new($warning, (l: lightness($warning) - 20));
+$borderSuccess:        $success; //in native
+$borderSuccessHover:   hsla-new($success, (l: lightness($success) - 20));
+$borderCritical:       $critical; //in native
+$borderCriticalHover:  hsla-new($critical, (l: lightness($critical) - 20));
+$borderLinkInteractive:  hsla-new($interactive, (a: 0.6));
+$borderLinkInteractiveHover:  hsla-new($interactive, (l: lightness($interactive) - 15, a: 0.6));
+$borderLinkBase:  hsla-new($base, (a: 0.6));
+$borderLinkSecondary:  hsla-new($base, (l: lightness($base) + 45, a: 0.6));
+$borderLinkSecondaryHover:  hsla-new($base, (l: lightness($base) + 30, a: 0.6));
+
+//INTERACTIVE
+$controlBrandBackground: $brand; //in native
+$controlBrandBackgroundHover: hsla-new($brand, (l: lightness($brand) - 15));
+$controlBrandText: hsla-new($base, (l: 100));
+$controlFlatSystemText: $system; //in native
+$controlFlatSystemTextHover: hsla-new($system, (l: lightness($system) - 15));
+$controlSecondaryBrandBackground: hsla-new($brand, (a: 0.1));
+$controlSecondaryBrandBackgroundHover: hsla-new($brand, (l: lightness($brand) - 15 ,a: 0.1));
+$controlSecondaryBrandText: hsla-new($brand, (l: lightness($brand) - 15));
+$controlOutlineBorder: $borderBase; //in native
+$controlOutlineBorderHover: $borderBaseHover; //in native
+$controlOutlineText: $textLinkBase; //in native
+$controlOutlineBrandBorder: hsla-new($brand, (a: 0.5));
+$controlOutlineBrandBorderHover: $brand; //in native
+$controlOutlineBrandText: $brand; //in native
+$controlFlatBrandText: $brand; //in native
+$controlFlatBrandTextHover: hsla-new($brand, (l: lightness($brand) - 15));
+$controlCriticalBackground: hsla-new($critical, (a: 0.15));
+$controlCriticalBackgroundHover: hsla-new($critical, (l: lightness($critical) - 15, a: 0.15));
+$controlCriticalText: hsla-new($critical, (l: lightness($critical) - 15));
+$controlSuccessBackground: hsla-new($success, (a: 0.15));
+$controlSuccessBackgroundHover: hsla-new($success, (l: lightness($success) - 15, a: 0.15));
+$controlSuccessText: hsla-new($success, (l: lightness($success) - 15));
+$controlWarningBackground: hsla-new($warning, (a: 0.15));
+$controlWarningBackgroundHover: hsla-new($warning, (l: lightness($warning) - 15, a: 0.15));
+$controlWarningText: hsla-new($warning, (l: lightness($warning) - 15));
+$controlBaseBackground: hsla-new($base, (l: 100));
+$controlBaseBackgroundHover: hsla-new($base, (a: 0.05));
+$controlBaseText: hsla-new($base, (l: lightness($base) + 45));
+$controlBaseTextHover: $base; //in native
+$controlBaseTextActive: $base; //in native
+
+//INPUT
+$inputBaseBackground: $surface;
+$inputBaseBorder: hsla-new($background, (l: lightness($background) - 16));
+$inputBaseBorderHover: hsla-new($background, (l: lightness($background) - 26));
+$inputBaseBorderFocus: $interactive;
+$inputBaseBorderError: $critical;
+$inputBaseBorderErrorHover: hsla-new($critical, (l: lightness($critical) - 15));
+$inputBaseText: hsla-new($base, (l: lightness($base) + 25));
+$inputBaseTextPlaceholder: hsla-new($base, (l: lightness($base) + 65));
+$inputBaseTextHover: $base;
+$inputBaseTextFocus: $base;
+$inputBaseTextError:  hsla-new($critical, (l: lightness($critical) - 15));

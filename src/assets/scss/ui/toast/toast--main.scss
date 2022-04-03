@@ -1,0 +1,203 @@
+.toast-container {
+    pointer-events: none;
+    box-sizing: border-box;
+
+    @media (max-width: $maxMobile) {
+        width: 100%;
+        left: 0;
+        top: 0;
+        padding-right: toRem(16);
+        padding-left: toRem(16);
+        padding-top: toRem(16);
+    }
+
+    @media (min-width: $tablet) {
+        &--position {
+            &-top {
+                &-right {
+                    top: toRem(8);
+                    right: toRem(8);
+
+                    .toast {
+                        transform: translate(100%, 0);
+                    }
+                }
+
+                &-left {
+                    top: toRem(8);
+                    left: toRem(8);
+
+                    .toast {
+                        transform: translate(-100%, 0);
+                    }
+                }
+
+                &-center {
+                    top: toRem(8);
+                    left: 50%;
+                    transform: translate(-50%, 0);
+
+                    .toast {
+                        transform: translate(0, -100%);
+                    }
+                }
+            }
+
+            &-bottom {
+                &-left {
+                    bottom: toRem(8);
+                    left: toRem(8);
+
+                    .toast {
+                        transform: translate(-100%, 0);
+                    }
+                }
+
+                &-right {
+                    bottom: toRem(8);
+                    right: toRem(8);
+
+                    .toast {
+                        transform: translate(100%, 0);
+                    }
+                }
+
+                &-center {
+                    left: 50%;
+                    bottom: toRem(8);
+                    transform: translate(-50%, 0);
+
+                    .toast {
+                        transform: translate(0, 100%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.toast {
+    $padding: 12;
+
+    overflow: hidden;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease, height 0.1s ease, margin-top 0.1s ease;
+    opacity: 0;
+    min-width: toRem(280);
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: $radiusButton;
+
+    &__icon {
+        font-size: toRem(20);
+        position: absolute;
+
+        &--information {
+            left: toRem($padding);
+            top: toRem($padding);
+        }
+
+        &--close {
+            right: toRem($padding);
+            top: toRem($padding);
+            color: var(--textSecondary);
+        }
+    }
+
+    &__content {
+        width: 100%;
+        box-sizing: border-box;
+        padding: toRem($padding) toRem(8 + 20 + $padding);
+        border-radius: $radiusButton;
+        background-color: var(--backgroundSurface);
+        border: 1px solid transparent;
+        min-height: toRem(44);
+    }
+
+    &__title {
+        & + .toast__text {
+            @include marginLevel(top, red);
+        }
+    }
+
+    &__text {
+        @include fontSize(p5);
+    }
+
+    &.is-active {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    &.is-hide {
+        opacity: 0;
+        transform: translate(100%, 0);
+    }
+
+    & + & {
+        margin-top: toRem(8);
+    }
+
+    &--view {
+        &-base {
+            box-shadow: var(--shadowBase);
+
+            .toast {
+                &__icon--information {
+                    color: var(--textSecondary);
+                }
+
+                &__content {
+                    padding-left: toRem($padding);
+                    border-color: var(--borderBase);
+                }
+            }
+        }
+
+        &-warning {
+            box-shadow: var(--shadowWarning);
+
+            .toast {
+                &__icon--information {
+                    color: var(--textWarning);
+                }
+
+                &__content {
+                    border-color: var(--borderWarning);
+                }
+            }
+        }
+
+        &-success {
+            box-shadow: var(--shadowSuccess);
+
+            .toast {
+                &__icon--information {
+                    color: var(--textSuccess);
+                }
+
+                &__content {
+                    border-color: var(--borderSuccess);
+                }
+            }
+        }
+
+        &-critical {
+            box-shadow: var(--shadowCritical);
+
+            .toast {
+                &__icon--information {
+                    color: var(--textCritical);
+                }
+
+                &__content {
+                    border-color: var(--borderCritical);
+                }
+            }
+        }
+    }
+
+    @media (min-width: $tablet) {
+        max-width: toRem(728);
+    }
+}

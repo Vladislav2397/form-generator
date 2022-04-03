@@ -1,0 +1,9 @@
+.bank-group-list {
+    &__item {
+        @include marginLevel(top, cobalt);
+    }
+
+    &__title {
+        @include marginLevel(bottom, yellow);
+    }
+}

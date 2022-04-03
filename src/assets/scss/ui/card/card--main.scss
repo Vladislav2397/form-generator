@@ -1,0 +1,45 @@
+.card {
+    &--interactive {
+        cursor: pointer;
+    }
+
+    @media (min-width: $desktop) {
+        &--interactive {
+            transition: 0.3s ease;
+            transition-property: border-color, box-shadow;
+
+            &:hover {
+                &.card--view {
+                    &-base {
+                        border-color: var(--borderBaseHover);
+                        box-shadow: 0 0 0 1px var(--borderBaseHover);
+                    }
+
+                    &-warning {
+                        border-color: var(--borderWarningHover);
+                        box-shadow: 0 0 0 1px var(--borderWarningHover);
+                    }
+
+                    &-critical {
+                        border-color: var(--borderCriticalHover);
+                        box-shadow: 0 0 0 1px var(--borderCriticalHover);
+                    }
+
+                    &-success {
+                        border-color: var(--borderSuccessHover);
+                        box-shadow: 0 0 0 1px var(--borderSuccessHover);
+                    }
+
+                    &-primary {
+                        border-color: var(--borderPrimaryHover);
+                        box-shadow: 0 0 0 1px var(--borderPrimaryHover);
+                    }
+                }
+
+                &.card--border-style-dashed {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}

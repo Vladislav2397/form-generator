@@ -1,0 +1,123 @@
+.card-info {
+    $iconSize: 16;
+
+    min-width: toRem(280);
+
+    &__content {
+        padding-right: toRem(10 + $iconSize);
+        position: relative;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    &__section {
+        display: table-cell;
+        width: 100%;
+
+        &--right {
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        &--skeleton {
+            width: 50%;
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+
+    &__skeleton {
+        display: inline-block;
+
+        &--label {
+            max-width: toRem(120);
+        }
+
+        &--promo,
+        &--description {
+            max-width: 50%;
+        }
+
+        & + & {
+            margin-left: toRem(12);
+        }
+    }
+
+    &__top {
+        display: table-row;
+        width: 100%;
+    }
+
+    &__text {
+        @include fontSize(p5);
+
+        &--secondary {
+            color: var(--textSecondary);
+        }
+
+        &--label {
+            text-align: right;
+            padding-left: toRem(8);
+
+            @include mono-space;
+        }
+
+        &--bottom {
+            margin-right: toRem(12);
+            margin-bottom: toRem(4);
+            display: inline-block;
+        }
+
+        &--success {
+            color: var(--textSuccess);
+        }
+
+        &--warning {
+            color: var(--textWarning);
+        }
+    }
+
+    &__title {
+        @include fontSize(p4);
+
+        display: table-cell;
+
+        &-wrapper {
+            display: table-row;
+        }
+    }
+
+    &__icon {
+        font-size: toRem($iconSize);
+        opacity: 0.5;
+
+        &--arrow {
+            position: absolute;
+            top: toRem(2.5);
+            right: 0;
+        }
+
+        &--bottom {
+            margin-right: toRem(4);
+            vertical-align: middle;
+        }
+    }
+
+    &__loader {
+        position: absolute;
+        top: toRem(2.5);
+        right: 0;
+    }
+
+    &__status {
+        margin-left: toRem(4);
+        white-space: nowrap;
+    }
+
+    &__bottom {
+        margin-top: toRem(4);
+        margin-bottom: toRem(-4);
+    }
+}

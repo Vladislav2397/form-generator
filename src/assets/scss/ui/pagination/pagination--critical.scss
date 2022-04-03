@@ -1,0 +1,19 @@
+.pagination {
+    &__button {
+        vertical-align: middle;
+    }
+
+    &__list {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 toRem(4);
+    }
+
+    &__item {
+        min-width: toRem(44);
+
+        & + & {
+            margin-left: toRem(4);
+        }
+    }
+}

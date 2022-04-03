@@ -1,0 +1,22 @@
+.bank-logo {
+    display: inline-block;
+    height: toRem(32);
+    width: auto;
+
+    img {
+        display: block;
+        height: 100%;
+        width: auto;
+        margin: 0 auto;
+        font-size: 0;
+    }
+
+    &--small {
+        width: toRem(24);
+        height: toRem(24);
+
+        img {
+            width: 100%;
+        }
+    }
+}

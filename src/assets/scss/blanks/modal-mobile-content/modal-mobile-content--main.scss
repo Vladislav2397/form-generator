@@ -1,0 +1,40 @@
+.modal-mobile-content {
+    &__wrapper {
+        position: relative;
+        background-color: var(--backgroundSurface);
+        min-width: toRem(260);
+        width: 100%;
+        border-radius: $radiusCard $radiusCard 0 0;
+        height: 100%;
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: toRem(4 + 8 + 24);
+            position: absolute;
+            bottom: 100%;
+        }
+
+        &::before {
+            content: '';
+
+            @include center(horizontal);
+            @include marginLevel(bottom, yellow);
+
+            background-color: var(--backgroundSurface);
+            bottom: 100%;
+            width: toRem(56);
+            height: toRem(4);
+            border-radius: toRem(2);
+        }
+    }
+
+    &__slot {
+        padding: 0 toRem(16);
+        min-height: toRem(32 + 16);
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+    }
+}

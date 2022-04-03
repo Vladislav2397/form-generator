@@ -1,0 +1,28 @@
+.sidebar {
+    width: 100%;
+
+    &--background {
+        &-surface {
+            background-color: var(--backgroundSurface);
+        }
+
+        &-base {
+            background-color: var(--backgroundBase);
+        }
+    }
+
+    @media (min-width: $desktop) {
+        height: 100%;
+        border-right: 1px solid var(--borderSecondary);
+
+        &--size {
+            &-s {
+                max-width: $sidebarWidthS;
+            }
+
+            &-m {
+                max-width: $sidebarWidthM;
+            }
+        }
+    }
+}

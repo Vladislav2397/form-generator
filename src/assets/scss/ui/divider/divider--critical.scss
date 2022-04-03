@@ -1,0 +1,75 @@
+.divider {
+    span {
+        display: block;
+    }
+
+    &--round {
+        span {
+            border-radius: 1px;
+        }
+    }
+
+    &--horizontal {
+        width: 100%;
+        height: 0;
+
+        span {
+            width: 100%;
+        }
+
+        &.divider {
+            &--size {
+                &-s {
+                    span {
+                        height: 1px;
+                    }
+                }
+
+                &-m {
+                    span {
+                        height: 2px;
+                    }
+                }
+            }
+        }
+    }
+
+    &--vertical {
+        height: 100%;
+        width: 0;
+
+        span {
+            height: 100%;
+        }
+
+        &.divider {
+            &--size {
+                &-s {
+                    span {
+                        width: 1px;
+                    }
+                }
+
+                &-m {
+                    span {
+                        width: 2px;
+                    }
+                }
+            }
+        }
+    }
+
+    &--view {
+        &-base {
+            span {
+                background-color: var(--borderBase);
+            }
+        }
+
+        &-secondary {
+            span {
+                background-color: var(--borderSecondary);
+            }
+        }
+    }
+}

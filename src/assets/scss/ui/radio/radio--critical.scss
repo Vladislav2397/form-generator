@@ -1,0 +1,60 @@
+.radio {
+    &__text {
+        @include fontSize(p5);
+
+        color: var(--textSecondary);
+
+        &--label {
+            @include marginLevel(bottom, red);
+        }
+
+        &--description {
+            @include marginLevel(top, red);
+        }
+    }
+
+    &--direction {
+        &-column {
+            .radio {
+                &__option {
+                    display: block;
+
+                    & + .radio__option {
+                        @include marginLevel(top, yellow);
+                    }
+                }
+            }
+        }
+
+        &-row {
+            .radio {
+                &__options {
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                &__option {
+                    width: 100%;
+
+                    &:first-child {
+                        border-top-right-radius: 0;
+                        border-bottom-right-radius: 0;
+                    }
+
+                    &:last-child {
+                        border-top-left-radius: 0;
+                        border-bottom-left-radius: 0;
+                    }
+
+                    &:not(:first-child):not(:last-child) {
+                        border-radius: 0;
+                    }
+
+                    & + .radio__option {
+                        border-left: none;
+                    }
+                }
+            }
+        }
+    }
+}

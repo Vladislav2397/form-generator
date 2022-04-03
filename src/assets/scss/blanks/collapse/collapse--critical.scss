@@ -1,0 +1,65 @@
+.collapse {
+    overflow: hidden;
+
+    &__head {
+        @include fontSize(p4);
+        @include paddingLevel(top, pink);
+
+        padding-right: toRem(36);
+        position: relative;
+        color: var(--textBase);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: toRem(-16);
+        }
+    }
+
+    &__badge {
+        margin-left: toRem(8);
+    }
+
+    &__icon {
+        position: absolute;
+        opacity: 0.5;
+        font-size: toRem(20);
+        right: 0;
+
+        @include positionLevel(top, pink);
+    }
+
+    &__wrapper {
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    &__content {
+        @include paddingLevel(top, pink);
+    }
+
+    &__divider {
+        @include paddingLevel(top, pink);
+
+        height: 1px;
+    }
+
+    &.is-active {
+        .collapse {
+            &__icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        cursor: pointer;
+
+        &__wrapper {
+            cursor: auto;
+        }
+    }
+}

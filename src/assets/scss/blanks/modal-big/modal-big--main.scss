@@ -1,0 +1,194 @@
+.modal-big {
+    $appendWidth: 320;
+    $mainWidth: 640;
+    $container: 20;
+
+    &__wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        background-color: var(--backgroundSurface);
+
+        @media (max-width: $maxMobile) {
+            width: 100%;
+        }
+    }
+
+    &__head {
+        padding-right: toRem(32);
+        box-sizing: border-box;
+
+        @media (max-width: $maxMobileLate) {
+            & > .title {
+                line-height: toRem(32);
+            }
+        }
+    }
+
+    &__button {
+        position: absolute;
+
+        @include positionLevel(top, cobalt);
+
+        z-index: 1;
+
+        &--close {
+            right: $containerPaddingMobile;
+        }
+    }
+
+    &__main {
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    &__append {
+        width: 100%;
+
+        @media (max-width: $maxMobile) {
+            height: 90%;
+        }
+
+        @media (max-width: $maxTablet) {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+        }
+    }
+
+    &__scroller {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 100%;
+        box-sizing: border-box;
+
+        @include paddingLevel(top, blue);
+    }
+
+    &__container {
+        margin: auto;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    &__bottom {
+        border-top: 1px solid var(--borderBase);
+        margin: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: var(--backgroundSurface);
+        z-index: $zIndexModal;
+
+        @include paddingLevel(top, green);
+        @include paddingLevel(bottom, pink);
+    }
+
+    &__content {
+        @include paddingLevel(bottom, beige);
+    }
+
+    &__overlay {
+        z-index: 1;
+    }
+
+    @media (min-width: $tablet) {
+        &__main {
+            width: toRem($mainWidth);
+        }
+
+        &__container,
+        &__bottom {
+            padding-left: toRem($container);
+            padding-right: toRem($container);
+        }
+
+        &__content {
+            @include paddingLevel(bottom, pink);
+        }
+
+        &__append {
+            height: 100%;
+            max-width: toRem($appendWidth);
+        }
+
+        &__scroller {
+            padding-left: toRem(16);
+            padding-right: toRem(16);
+        }
+    }
+
+    @media (min-width: $tablet) {
+        &__button {
+            &--close-append {
+                right: 100%;
+                top: toRem((24 - (40 - 28)/2));
+            }
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        &__button {
+            right: 100%;
+            top: toRem((24 - (40 - 28)/2));
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__main {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &__append {
+            display: inline-block;
+            vertical-align: middle;
+            //teletype styles in px
+            padding-bottom: 48px + 24px*2;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        &__teletype-banner {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 28px 116px 28px 0;
+            background-color: var(--backgroundBase);
+            width: 100%;
+            box-sizing: border-box;
+            text-align: right;
+
+            p {
+                font-size: 14px;
+                line-height: 20px;
+                color: var(--textSecondary);
+                text-align: left;
+                display: inline-block;
+            }
+
+            img {
+                width: 57px;
+                right: 82px;
+                bottom: 27px;
+                position: absolute;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 100%;
+                left: 0;
+                height: toRem(20);
+                background: linear-gradient(0deg, var(--backgroundBase) 0%, hsla-new($backgroundBase, (a: 0)) 100%);
+                width: 100%;
+            }
+        }
+    }
+}

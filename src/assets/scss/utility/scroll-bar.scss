@@ -1,0 +1,20 @@
+.os-windows {
+    @media (hover: hover) {
+        /* width */
+        ::-webkit-scrollbar {
+            width: toRem(4);
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background-color: var(--backgroundBase);
+            border-radius: toRem(4);
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--borderBase);
+            border-radius: toRem(4);
+        }
+    }
+}

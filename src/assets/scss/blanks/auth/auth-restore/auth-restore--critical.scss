@@ -1,0 +1,17 @@
+.auth-restore {
+    &__title {
+        @include marginLevel(bottom, cobalt);
+    }
+
+    &__line {
+        & + & {
+            @include marginLevel(top, green);
+        }
+    }
+
+    &__button {
+        @include marginLevel(top, blue);
+
+        width: 100%;
+    }
+}

@@ -1,0 +1,14 @@
+$mainFontFamily: 'inter';
+$icon: 'icon', sans-serif;
+$fontFamily: $mainFontFamily, -apple-system, blinkmacsystemfont, 'Helvetica', 'Arial', sans-serif;
+
+$tags: (
+    h1  : ( toRem(24), toRem(32) ),
+    h2  : ( toRem(24), toRem(32) ),
+    h3  : ( toRem(20), toRem(28) ),
+    p1  : ( toRem(24), toRem(32) ),
+    p2  : ( toRem(20), toRem(28) ),
+    p3  : ( toRem(16), toRem(22) ),
+    p4  : ( toRem(14), toRem(20) ),
+    p5  : ( toRem(12), toRem(16) ),
+);

@@ -1,0 +1,12 @@
+.auth-login {
+    @media (min-width: $desktop) {
+        &__link[href] {
+            transition: border 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                border-color: #0040ff80;
+            }
+        }
+    }
+}

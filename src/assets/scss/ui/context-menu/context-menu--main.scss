@@ -1,0 +1,66 @@
+.context-menu {
+    padding: 0;
+    width: toRem(240);
+    box-shadow: $shadowBase;
+    transition: 0.3s ease;
+    transition-property: opacity, transform;
+    transform: translate(0, 10px);
+
+    &__options {
+        max-height: toRem(180);
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    &__option {
+        padding: toRem(8) toRem(12);
+        cursor: pointer;
+
+        @include fontSize(p4);
+
+        color: var(--textSecondary);
+        transition: color 0.3s ease;
+
+        & + & {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: toRem(6);
+                right: toRem(6);
+                height: 1px;
+                background-color: var(--borderSecondary);
+            }
+        }
+
+        i {
+            font-size: toRem(16);
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: toRem(6);
+            color: var(--textSecondary);
+
+            &::before {
+                transition: color 0.3s ease;
+            }
+        }
+
+        &:hover {
+            color: var(--textLinkSecondaryHover);
+
+            i {
+                &::before {
+                    color: var(--textLinkSecondaryHover);
+                }
+            }
+        }
+    }
+
+    &.is-active {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}

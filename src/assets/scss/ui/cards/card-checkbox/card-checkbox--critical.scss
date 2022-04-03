@@ -1,0 +1,15 @@
+.card-checkbox {
+    @include fontSize(p4);
+
+    position: relative;
+
+    &__text {
+        padding-right: toRem(28);
+
+        & + .card-checkbox__value {
+            position: absolute;
+            top: toRem(10);
+            right: toRem(10);
+        }
+    }
+}

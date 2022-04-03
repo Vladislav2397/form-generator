@@ -1,0 +1,51 @@
+.tag {
+    padding: 0 toRem(6);
+    color: var(--textLinkSecondary);
+    display: inline-block;
+    border-radius: $radiusButton;
+    background-color: var(--backgroundSystem);
+    font-size: 0;
+
+    &__value {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__icon {
+        margin-left: toRem(2);
+        display: inline-block;
+        vertical-align: middle;
+        font-size: toRem(12);
+        line-height: normal;
+    }
+
+    &--size {
+        &-s {
+            height: toRem(18);
+
+            .tag {
+                &__value {
+                    @include fontSize(p5);
+
+                    line-height: toRem(18);
+                }
+            }
+        }
+
+        &-m {
+            height: toRem(22);
+
+            .tag {
+                &__value {
+                    @include fontSize(p4);
+
+                    line-height: toRem(22);
+                }
+            }
+        }
+    }
+
+    &.is-disabled {
+        opacity: 0.6;
+    }
+}

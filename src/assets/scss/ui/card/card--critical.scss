@@ -1,0 +1,66 @@
+.card {
+    padding: toRem(12);
+    border-radius: $radiusCard;
+    border: 1px transparent;
+    box-shadow: 0 0 0 1px transparent;
+    text-align: left;
+    box-sizing: border-box;
+
+    &.is-disabled {
+        opacity: 0.5;
+    }
+
+    &--size {
+        &-l {
+            padding: toRem(12);
+            border-radius: $radiusCard;
+        }
+
+        &-m {
+            padding: toRem(10);
+            border-radius: $radiusButton;
+        }
+    }
+
+    &--view {
+        &-base {
+            border-color: var(--borderBase);
+        }
+
+        &-warning {
+            border-color: var(--borderWarning);
+        }
+
+        &-critical {
+            border-color: var(--borderCritical);
+        }
+
+        &-success {
+            border-color: var(--borderSuccess);
+        }
+
+        &-primary {
+            border-color: var(--borderPrimary);
+        }
+    }
+
+    &--border-style {
+        &-solid {
+            border-style: solid;
+        }
+
+        &-dashed {
+            border-style: dashed;
+        }
+    }
+
+    &--background {
+        &-surface {
+            background-color: var(--backgroundSurface);
+        }
+
+        &-base {
+            background-color: var(--backgroundBase);
+        }
+    }
+}

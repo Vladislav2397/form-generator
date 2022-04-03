@@ -1,0 +1,9 @@
+.auth-registration-header {
+    &__title {
+        @include marginLevel(bottom, green);
+    }
+
+    &__bar {
+        @include marginLevel(bottom, green);
+    }
+}

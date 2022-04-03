@@ -1,0 +1,48 @@
+.radio-toggle {
+    border-radius: 50%;
+    position: relative;
+    border: 1px solid var(--borderBase);
+    background-color: var(--backgroundSurface);
+
+    span {
+        @include center;
+
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background-color: var(--controlBrandBackground);
+    }
+
+    &--size {
+        &-s {
+            width: toRem(16);
+            height: toRem(16);
+
+            span {
+                width: toRem(8);
+                height: toRem(8);
+            }
+        }
+
+        &-m {
+            width: toRem(20);
+            height: toRem(20);
+
+            span {
+                width: toRem(10);
+                height: toRem(10);
+            }
+        }
+    }
+
+    &.is-checked {
+        border-color: var(--controlBrandBackground);
+
+        span {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    &.is-disabled {
+        opacity: 0.6;
+    }
+}

@@ -1,0 +1,29 @@
+.button-hamburger {
+    width: toRem(32);
+    height: toRem(32);
+    position: relative;
+
+    &__wrapper {
+        @include center;
+    }
+
+    span {
+        width: toRem(14);
+        border-radius: toRem(2);
+        height: toRem(2);
+        position: absolute;
+        background-color: var(--controlFlatSystemText);
+
+        &:nth-child(1) {
+            transform: translate(-50%, -50%) translateY(toRem(-5));
+        }
+
+        &:nth-child(2) {
+            transform: translate(-50%, -50%);
+        }
+
+        &:nth-child(3) {
+            transform: translate(-50%, -50%) translateY(toRem(5));
+        }
+    }
+}

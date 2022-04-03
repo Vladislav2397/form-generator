@@ -1,0 +1,14 @@
+.icon-base {
+    display: inline-block;
+    color: inherit;
+
+    &::before {
+        font-family: $icon;
+        display: block;
+        font-size: inherit;
+        color: inherit;
+        line-height: 1;
+    }
+
+    @include iconsModify;
+}

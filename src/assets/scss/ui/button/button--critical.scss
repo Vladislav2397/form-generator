@@ -1,0 +1,243 @@
+.button {
+    border-radius: $radiusButton;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+
+    &__icon {
+        vertical-align: middle;
+        opacity: 0.75;
+        pointer-events: none;
+        margin-top: -1px;
+    }
+
+    &__spinner {
+        margin: 0 auto;
+    }
+
+    &.is-disabled {
+        opacity: 0.4;
+    }
+
+    &--size {
+        &-s {
+            padding: 0 toRem(8);
+            height: toRem(24);
+            min-width: toRem(24);
+
+            @include fontSize(p5);
+
+            line-height: calc(#{toRem(24)} - 2px);
+
+            .button__icon {
+                width: toRem(16);
+                height: toRem(16);
+
+                &::before {
+                    font-size: toRem(16);
+                }
+            }
+
+            &.is-only-icon {
+                width: toRem(24);
+            }
+        }
+
+        &-m {
+            padding: 0 toRem(12);
+            height: toRem(32);
+            min-width: toRem(32);
+
+            @include fontSize(p4);
+
+            line-height: calc(#{toRem(32)} - 2px);
+
+            .button__icon {
+                width: toRem(20);
+                height: toRem(20);
+
+                &::before {
+                    font-size: toRem(20);
+                }
+            }
+
+            &.is-only-icon {
+                width: toRem(32);
+            }
+        }
+
+        &-l {
+            padding: 0 toRem(16);
+            height: toRem(40);
+            min-width: toRem(40);
+
+            @include fontSize(p4);
+
+            line-height: calc(#{toRem(40)} - 2px);
+
+            .button__icon {
+                width: toRem(20);
+                height: toRem(20);
+
+                &::before {
+                    font-size: toRem(20);
+                }
+            }
+
+            &.is-only-icon {
+                width: toRem(40);
+            }
+        }
+    }
+
+    &.is-only-icon {
+        padding: 0;
+        text-align: center;
+        font-size: 0;
+
+        .button__icon {
+            margin: 0;
+        }
+    }
+
+    &--view {
+        &-brand {
+            background-color: var(--controlBrandBackground);
+            color: var(--controlBrandText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlBrandText);
+                }
+            }
+        }
+
+        &-secondary-brand {
+            background-color: var(--controlSecondaryBrandBackground);
+            color: var(--controlSecondaryBrandText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlSecondaryBrandText);
+                }
+            }
+        }
+
+        &-outline-brand {
+            border-color: var(--controlOutlineBrandBorder);
+            color: var(--controlOutlineBrandText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlOutlineBrandText);
+                }
+            }
+        }
+
+        &-outline {
+            border-color: var(--controlOutlineBorder);
+            color: var(--controlOutlineText);
+            background-color: var(--backgroundSurface);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlOutlineText);
+                }
+            }
+        }
+
+        &-flat-brand {
+            color: var(--controlFlatBrandText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlFlatBrandText);
+                }
+            }
+        }
+
+        &-critical {
+            background-color: var(--controlCriticalBackground);
+            color: var(--controlCriticalText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlCriticalText);
+                }
+            }
+        }
+
+        &-success {
+            background-color: var(--controlSuccessBackground);
+            color: var(--controlSuccessText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlSuccessText);
+                }
+            }
+        }
+
+        &-warning {
+            background-color: var(--controlWarningBackground);
+            color: var(--controlWarningText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlWarningText);
+                }
+            }
+        }
+
+        &-flat {
+            color: var(--controlFlatSystemText);
+
+            .button__icon {
+                &::before {
+                    color: var(--controlFlatSystemText);
+                }
+            }
+        }
+    }
+
+    &--default {
+        &.button {
+            &--icon {
+                &-right {
+                    .button__icon {
+                        margin-left: toRem(4);
+                    }
+                }
+
+                &-left {
+                    .button__icon {
+                        margin-right: toRem(4);
+                    }
+                }
+            }
+        }
+    }
+
+    &--media {
+        img,
+        span {
+            display: inline-block;
+        }
+
+        span {
+            @include fontSize(p5);
+
+            line-height: inherit;
+            vertical-align: top;
+        }
+
+        img {
+            width: toRem(20);
+            height: toRem(20);
+            margin-left: toRem(-4);
+            margin-top: -2px;
+            vertical-align: middle;
+        }
+    }
+}

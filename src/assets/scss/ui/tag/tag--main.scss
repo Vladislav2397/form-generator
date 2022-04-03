@@ -1,0 +1,25 @@
+.tag {
+    &.is-removable {
+        cursor: pointer;
+    }
+
+    @media (min-width: $desktop) {
+        &.is-removable {
+            .tag {
+                &__value {
+                    transition: color 0.3s ease;
+                }
+
+                &__icon {
+                    &::before {
+                        transition: color 0.3s ease;
+                    }
+                }
+            }
+
+            &:hover {
+                color: var(--textLinkSecondaryHover);
+            }
+        }
+    }
+}

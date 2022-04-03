@@ -1,0 +1,35 @@
+.grid-row-layout {
+    --row-gap: 0.5rem;
+
+    white-space: nowrap;
+    width: 100%;
+
+    &__item {
+        display: inline-block;
+        padding-left: var(--row-gap);
+        padding-right: var(--row-gap);
+        vertical-align: top;
+        white-space: normal;
+
+        .form-item {
+            min-width: auto;
+        }
+
+        &--first {
+            padding-left: 0;
+        }
+
+        &--last {
+            padding-right: 0;
+        }
+
+        &--single {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        & > .button {
+            width: 100%;
+        }
+    }
+}

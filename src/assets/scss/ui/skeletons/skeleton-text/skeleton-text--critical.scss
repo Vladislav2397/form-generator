@@ -1,0 +1,81 @@
+.skeleton-text {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 0 !important;
+    line-height: normal !important;
+    display: block;
+
+    span {
+        border-radius: toRem(2);
+        display: inline-block;
+        width: 100%;
+        opacity: 0.25;
+    }
+
+    &--size {
+        &-xs {
+            padding-top: toRem(5);
+            height: toRem(16);
+
+            span {
+                height: toRem(7);
+            }
+        }
+
+        &-s {
+            padding-top: toRem(7);
+            height: toRem(20);
+
+            span {
+                height: toRem(8);
+            }
+        }
+
+        &-m {
+            padding-top: toRem(8);
+            height: toRem(22);
+
+            span {
+                height: toRem(9);
+            }
+        }
+
+        &-l {
+            padding-top: toRem(10);
+            height: toRem(21);
+
+            span {
+                height: toRem(11);
+            }
+        }
+
+        &-xxl {
+            padding-top: toRem(8);
+            height: toRem(28);
+
+            span {
+                height: toRem(16);
+            }
+        }
+    }
+
+    &--view {
+        &-base {
+            span {
+                background-color: var(--textBase);
+            }
+        }
+
+        &-secondary {
+            span {
+                background-color: var(--textSecondary);
+            }
+        }
+
+        &-success {
+            span {
+                background-color: var(--textSuccess);
+            }
+        }
+    }
+}

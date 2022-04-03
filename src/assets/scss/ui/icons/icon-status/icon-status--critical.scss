@@ -1,0 +1,82 @@
+.icon-status {
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: relative;
+
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    &__icon {
+        @include center;
+
+        color: var(--backgroundSurface);
+    }
+
+    &--size {
+        &-s {
+            width: toRem(40);
+            height: toRem(40);
+            padding: toRem(4);
+            font-size: toRem(20);
+        }
+
+        &-m {
+            width: toRem(56);
+            height: toRem(56);
+            padding: toRem(6);
+            font-size: toRem(28);
+        }
+
+        &-l {
+            width: toRem(80);
+            height: toRem(80);
+            padding: toRem(8);
+            font-size: toRem(44);
+        }
+    }
+
+    &--view {
+        &-system {
+            background-color: var(--backgroundSystem);
+
+            .icon-status {
+                &__wrapper {
+                    background: var(--backgroundSystemAccent);
+                }
+            }
+        }
+
+        &-warning {
+            background-color: var(--backgroundWarning);
+
+            .icon-status {
+                &__wrapper {
+                    background: var(--backgroundWarningAccent);
+                }
+            }
+        }
+
+        &-success {
+            background-color: var(--backgroundSuccess);
+
+            .icon-status {
+                &__wrapper {
+                    background: var(--backgroundSuccessAccent);
+                }
+            }
+        }
+
+        &-critical {
+            background-color: var(--backgroundCritical);
+
+            .icon-status {
+                &__wrapper {
+                    background: var(--backgroundCriticalAccent);
+                }
+            }
+        }
+    }
+}

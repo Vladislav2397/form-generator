@@ -1,0 +1,39 @@
+.tabs {
+    background-color: var(--backgroundBase);
+    border: 1px solid var(--borderSecondary);
+    border-radius: $radiusButton;
+
+    &__item {
+        display: inline-block;
+        vertical-align: middle;
+        color: var(--controlBaseText);
+        padding: toRem(8) toRem(12);
+        min-width: toRem(49);
+
+        @include fontSize(p5);
+
+        &.is-active {
+            color: var(--controlBaseTextHover);
+        }
+    }
+
+    &__wrapper {
+        position: relative;
+    }
+
+    &__list {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__toggle {
+        position: absolute;
+        height: toRem(32);
+        left: -1px;
+        top: -1px;
+        border-radius: $radiusButton;
+        background-color: var(--backgroundSurface);
+        border: 1px solid var(--borderBase);
+        z-index: 1;
+    }
+}

@@ -1,0 +1,18 @@
+.modal-desktop-content {
+    $b: &;
+
+    &__wrapper {
+        background-color: var(--backgroundSurface);
+        max-width: toRem(480);
+        min-width: toRem(360);
+        border-radius: $radiusCard;
+        min-height: toRem(24);
+    }
+
+    &--clear-bottom-border-radius {
+        #{$b}__wrapper {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+}

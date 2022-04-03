@@ -1,0 +1,6 @@
+.sorting {
+    &__option {
+        transition: 0.15s ease;
+        transition-property: color, margin-right;
+    }
+}

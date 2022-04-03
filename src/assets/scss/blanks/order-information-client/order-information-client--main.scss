@@ -1,0 +1,197 @@
+.order-information-client {
+    @include paddingLevel(top, cobalt);
+
+    &__number {
+        display: inline-block;
+        vertical-align: middle;
+
+        @include fontSize(h3, (weight: 600));
+
+        &--skeleton {
+            min-width: toRem(110);
+        }
+    }
+
+    &__main {
+        @media (max-width: $maxMobileLate) {
+            @include marginLevel(bottom,green);
+
+            min-height: toRem(32);
+        }
+    }
+
+    &__button {
+        vertical-align: middle;
+        margin-left: toRem(4);
+    }
+
+    &__logo {
+        img {
+            width: toRem(40);
+            height: toRem(40);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        p {
+            margin-left: toRem(6);
+
+            @include fontSize(p3);
+
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @media (max-width: $maxMobileLate) {
+            @include marginLevel(bottom, green);
+        }
+    }
+
+    &__card {
+        & + & {
+            margin-top: toRem(12);
+        }
+    }
+
+    &__bank {
+        @include marginLevel(top, pink);
+        @include marginLevel(bottom, blue);
+
+        @media (max-width: $maxMobileLate) {
+            text-align: center;
+        }
+    }
+
+    &__base {
+        @media (max-width: $maxMobileLate) {
+            @include marginLevel(bottom, blue);
+        }
+    }
+
+    &__value {
+        &--commission {
+            @include fontSize(p4);
+        }
+
+        &--reward {
+            color: var(--textSuccess);
+        }
+
+        @media (max-width: $maxMobileLate) {
+            display: inline-block;
+            vertical-align: top;
+
+            @include fontSize(p5);
+
+            strong {
+                display: block;
+
+                @include fontSize(p4);
+                @include marginLevel(top,red);
+            }
+
+            & + & {
+                margin-left: toRem(24);
+            }
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        &__base {
+            display: table;
+            width: 100%;
+
+            @include paddingLevel(bottom, green);
+
+            & > * {
+                vertical-align: middle;
+                display: table-cell;
+            }
+        }
+
+        &__bank {
+            width: 100%;
+            display: table;
+
+            & > * {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+
+        &__main {
+            white-space: nowrap;
+        }
+
+        &__list {
+            width: 100%;
+            text-align: right;
+        }
+
+        &__item {
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+            font-size: 0;
+
+            span {
+                color: var(--textSecondary);
+                display: block;
+
+                @include fontSize(p5);
+            }
+
+            p {
+                @include fontSize(p5, (mono: true));
+
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            & > * + & > * {
+                @include marginLevel(top,red);
+            }
+
+            & + & {
+                margin-left: toRem(24);
+            }
+
+            &--skeleton {
+                min-width: toRem(100);
+            }
+        }
+
+        &__hint {
+            vertical-align: middle;
+            margin-left: toRem(6);
+        }
+
+        &__logo {
+            width: 100%;
+        }
+
+        &__value {
+            strong {
+                margin-left: toRem(8);
+            }
+
+            &--commission {
+                @include fontSize(p4);
+            }
+
+            &--reward {
+                @include fontSize(p5);
+                @include marginLevel(top,red);
+            }
+        }
+
+        &__values {
+            text-align: right;
+            white-space: nowrap;
+
+            & > * {
+                text-align: left;
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+.select {
+    &.is-filled {
+        .form-item {
+            &__placeholder {
+                color: var(--inputBaseText);
+            }
+        }
+    }
+}

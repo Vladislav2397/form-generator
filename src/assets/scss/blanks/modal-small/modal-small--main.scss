@@ -1,0 +1,65 @@
+.modal-small {
+    @media (max-width: $maxMobileLate) {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    &__wrapper {
+        @media (max-width: $maxMobileLate) {
+            position: relative;
+            max-height: calc(100% - 10vh);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+    }
+
+    &__content {
+        @media (max-width: $maxMobileLate) {
+            height: calc(100% - #{toRem(80)});
+        }
+    }
+
+    &__divider {
+        margin: 0 toRem(-16);
+        min-width: 100%;
+        width: auto;
+
+        @include marginLevel(bottom, green);
+    }
+
+    &__buttons {
+        padding-left: toRem(16);
+        padding-right: toRem(16);
+        background-color: var(--backgroundSurface);
+        padding-top: toRem(16);
+        text-align: right;
+
+        @include paddingLevel(bottom, green);
+    }
+
+    &__button {
+        vertical-align: middle;
+
+        & + & {
+            margin-left: toRem(8);
+        }
+
+        @media (max-width: $maxMobileLate) {
+            width: calc(50% - #{toRem(4)});
+        }
+    }
+
+    @media (min-width: $tabletLate) {
+        &__wrapper {
+            @include center;
+        }
+
+        &__buttons {
+            text-align: right;
+            border-radius: 0 0 $radiusCard $radiusCard;
+        }
+    }
+}

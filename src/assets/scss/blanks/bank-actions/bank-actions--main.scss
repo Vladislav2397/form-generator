@@ -1,0 +1,74 @@
+.bank-actions {
+    @include paddingLevel(bottom,blue);
+
+    &__update {
+        margin: 0 auto;
+    }
+
+    &__logo {
+        text-align: center;
+        font-size: 0;
+
+        @include marginLevel(bottom, pink);
+    }
+
+    &__divider {
+        &--top {
+            @include marginLevel(bottom, cobalt);
+        }
+
+        &--bottom {
+            @include marginLevel(vertical, blue);
+        }
+    }
+
+    &__requests {
+        @include marginLevel(top, pink);
+    }
+
+    &__button {
+        min-width: 100%;
+
+        & + & {
+            @include marginLevel(top, yellow);
+        }
+    }
+
+    &__request {
+        min-width: auto;
+
+        & + & {
+            @include marginLevel(top, yellow);
+        }
+    }
+
+    &__complete-requests {
+        @include marginLevel(top, cobalt);
+    }
+
+    &__complete-request {
+        & + & {
+            @include marginLevel(top, green);
+        }
+    }
+
+    &__buttons {
+        &--update {
+            @include marginLevel(top, pink);
+        }
+
+        &--order {
+            @include marginLevel(top, green);
+        }
+    }
+
+    &__documents {
+        @include marginLevel(top, green);
+    }
+
+    &__document {
+        min-width: auto;
+
+        @include marginLevel(top, yellow);
+    }
+}

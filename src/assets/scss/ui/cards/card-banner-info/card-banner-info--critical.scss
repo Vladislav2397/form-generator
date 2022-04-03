@@ -1,0 +1,100 @@
+.card-banner-info {
+    $b: &;
+
+    min-width: toRem(240);
+    position: relative;
+
+    &__description {
+        @include fontSize(p5);
+
+        color: var(--textSecondary);
+    }
+
+    &__title {
+        & + #{$b}__description {
+            @include marginLevel(top, red);
+        }
+    }
+
+    &__decoration {
+        text-align: center;
+
+        & > * {
+            display: inline-block;
+        }
+    }
+
+    &__loader {
+        &--position {
+            &-absolute {
+                @include center;
+                & + #{$b} {
+                    &__text {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &--direction {
+        &-column {
+            text-align: center;
+
+            #{$b} {
+                &__decoration {
+
+                    & + #{$b}__text {
+                        @include marginLevel(top, green);
+                    }
+                }
+
+                &__buttons {
+                    @include marginLevel(top, green);
+                }
+
+                &__button {
+                    width: 100%;
+
+                    & + #{$b}__button {
+                        @include marginLevel(top, yellow);
+                    }
+                }
+            }
+        }
+
+        &-row {
+            #{$b} {
+                &__content {
+                    display: table;
+                    width: 100%;
+
+                    & > * {
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+                }
+
+                &__decoration {
+                    width: toRem(40);
+
+                    & + #{$b}__text {
+                        padding-left: toRem(12);
+                    }
+                }
+
+                &__buttons {
+                    padding-left: toRem(16);
+                    text-align: right;
+                    white-space: nowrap;
+                }
+
+                &__button {
+                    & + #{$b}__button {
+                        margin-left: toRem(8);
+                    }
+                }
+            }
+        }
+    }
+}

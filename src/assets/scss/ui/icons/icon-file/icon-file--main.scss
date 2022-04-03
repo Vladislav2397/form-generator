@@ -1,0 +1,6 @@
+.icon-file {
+    &__status {
+        transition: 0.3s ease;
+        transition-property: color, border-color, background-color;
+    }
+}

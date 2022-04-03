@@ -1,0 +1,8 @@
+.navigation-item {
+    transition: 0.3s ease;
+    transition-property: background-color, color;
+
+    &__icon {
+        transition: opacity 0.3s ease;
+    }
+}

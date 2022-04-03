@@ -1,0 +1,225 @@
+.form-item {
+    transition: 0.3s ease;
+    transition-property: opacity;
+    $b: &;
+
+    &__text {
+        &--error {
+            transition: 0.1s ease;
+            transition-property: opacity, color, margin-top, height;
+        }
+    }
+
+    &__preloader {
+        pointer-events: none;
+    }
+
+    &__placeholder {
+        transition: 0.3s ease;
+        transition-property: color;
+    }
+
+    &__element {
+        transition: 0.3s ease;
+        transition-property: border-color, color, box-shadow;
+        caret-color: var(--inputBaseBorderFocus);
+
+        &::placeholder {
+            transition: 0.3s ease;
+            transition-property: color;
+        }
+
+        &:focus,
+        &.is-focus {
+            &::placeholder {
+                color: var(--inputBaseTextFocus);
+            }
+
+            & ~ *:not(.icon-base--close) {
+                &::before {
+                    color: var(--inputBaseTextFocus);
+                }
+            }
+        }
+    }
+
+    &--cursor {
+        &-pointer {
+            cursor: pointer;
+        }
+    }
+
+    &__icon {
+        &::before {
+            transition: 0.3s ease;
+            transition-property: color;
+        }
+
+        &.icon-base--chevron-down {
+            transition: 0.15s ease;
+            transition-property: transform;
+        }
+    }
+
+    &:not(.form-item--view-flat) {
+        #{$b} {
+            &__element {
+                &:focus,
+                &.is-focus {
+                    border-color: var(--inputBaseBorderFocus);
+                    box-shadow: var(--inputBaseFocus);
+                }
+            }
+        }
+
+        &.is-error {
+            #{$b} {
+                &__element {
+                    border-color: var(--inputBaseBorderError);
+                    box-shadow: var(--inputBaseError);
+
+                    &::placeholder {
+                        color: var(--inputBaseText);
+                    }
+
+                    &:focus,
+                    &.is-focus {
+                        border-color: var(--inputBaseBorderFocus);
+                        box-shadow: var(--inputBaseFocus);
+                    }
+                }
+            }
+        }
+    }
+
+    &--view {
+        &-flat {
+            &.is-error {
+                #{$b} {
+                    &__element {
+                        color: var(--inputBaseTextError);
+
+                        &::placeholder {
+                            color: var(--inputBaseTextError);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__content {
+            &:hover {
+                & > {
+                    #{$b} {
+                        &__placeholder {
+                            color: var(--inputBaseTextHover);
+                        }
+
+                        &__element {
+                            color: var(--inputBaseTextHover);
+                            border-color: var(--inputBaseBorderHover);
+
+                            &::placeholder {
+                                color: var(--inputBaseTextHover);
+                            }
+                        }
+
+                        &__icon:not(.icon-base--close) {
+                            &::before {
+                                color: var(--inputBaseTextHover);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &__icon {
+            &:hover {
+                &::before {
+                    color: var(--inputBaseTextHover);
+                }
+            }
+        }
+
+        &:not(.form-item--view-flat) {
+            #{$b} {
+                &__content {
+                    &:hover {
+                        & > {
+                            #{$b} {
+                                &__placeholder {
+                                    color: var(--inputBaseTextHover);
+                                }
+
+                                &__element {
+                                    color: var(--inputBaseTextHover);
+                                    border-color: var(--inputBaseBorderHover);
+
+                                    &::placeholder {
+                                        color: var(--inputBaseTextHover);
+                                    }
+
+                                    &:focus,
+                                    &.is-focus {
+                                        border-color: var(--inputBaseBorderFocus);
+                                        box-shadow: var(--inputBaseFocus);
+                                    }
+                                }
+
+                                &__icon:not(.icon-base--close) {
+                                    &::before {
+                                        color: var(--inputBaseTextHover);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.is-error {
+                #{$b} {
+                    &__content {
+                        &:hover {
+                            & > {
+                                #{$b} {
+                                    &__element {
+                                        border-color: var(--inputBaseBorderError);
+                                        box-shadow: var(--inputBaseError);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &--view {
+            &-flat {
+                &.is-error {
+                    #{$b} {
+                        &__content {
+                            &:hover {
+                                & > {
+                                    #{$b} {
+                                        &__element {
+                                            color: var(--inputBaseTextError);
+
+                                            &::placeholder {
+                                                color: var(--inputBaseTextError);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+body {
+    &.hide-teletype {
+        #teletype-iframes-container {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+    }
+
+    &.mode-teletype {
+        @media (max-width: $maxMobile) {
+            $offset: 93;
+
+            #teletype-widget-component-button {
+                bottom: toRem($offset) !important;
+            }
+
+            #teletype-widget-component-popup {
+                bottom: toRem(100 + $offset) !important;
+            }
+
+            #teletype-widget-component-invite {
+                bottom: toRem(100 + $offset) !important;
+            }
+        }
+    }
+}
+
+#teletype-iframes-container {
+    transition: opacity 0.3s ease;
+}
+
+#teletype-widget-component-button {
+    transition: bottom 0.3s ease, width 0.2s ease-out !important;
+}
+
+@media (min-width: $tablet) and (max-width: $maxTablet) {
+    #teletype-widget-component-button,
+    #teletype-widget-component-invite,
+    #teletype-widget-component-popup {
+        right: auto;
+    }
+
+    #teletype-widget-component-button,
+    #teletype-widget-component-invite {
+        left: 0;
+    }
+
+    #teletype-widget-component-popup {
+        left: 20px;
+    }
+}

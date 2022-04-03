@@ -1,0 +1,36 @@
+.auth-registration {
+    &__header {
+        @include marginLevel(bottom, blue);
+    }
+
+    &__card {
+        width: 100%;
+
+        & + & {
+            @include marginLevel(top, green);
+        }
+    }
+
+    &__line {
+        @include marginLevel(top, green);
+    }
+
+    &__button {
+        width: 100%;
+    }
+
+    &__button-wrapper {
+        @include marginLevel(top, blue);
+    }
+
+    &__privacy {
+        @include marginLevel(top, green);
+        @include fontSize(p5);
+
+        color: var(--textSecondary);
+    }
+
+    @media (min-width: $tabletLate) {
+        min-height: toRem(530);
+    }
+}

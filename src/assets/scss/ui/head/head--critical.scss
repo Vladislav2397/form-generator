@@ -1,0 +1,26 @@
+.head {
+    @include paddingLevel(top, cobalt);
+    @include paddingLevel(bottom, green);
+
+    display: table;
+    width: 100%;
+
+    &__title {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    &__buttons {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;
+    }
+
+    &__button {
+        display: inline-block;
+
+        & + & {
+            margin-left: toRem(10);
+        }
+    }
+}

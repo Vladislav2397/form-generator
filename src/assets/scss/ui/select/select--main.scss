@@ -1,0 +1,132 @@
+.select {
+    $iconSize: 16;
+
+    &__options {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        pointer-events: none;
+
+        &--bottom {
+            top: 100%;
+            margin-top: toRem(8);
+        }
+
+        &--top {
+            bottom: 100%;
+            margin-bottom: toRem(8);
+        }
+
+        &.is-active {
+            pointer-events: auto;
+        }
+    }
+
+    &__head {
+        @include paddingLevel(both, yellow);
+
+        margin: toRem(-10) toRem(-10) 0;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s ease;
+
+        & + .select__scroller {
+            margin-top: 0;
+        }
+
+        &.is-bordered {
+            border-color: var(--inputBaseBorder);
+        }
+    }
+
+    &__input {
+        width: 100%;
+        min-width: auto;
+    }
+
+    &__scroller {
+        max-height: toRem(180);
+        overflow-y: hidden;
+        overflow-x: hidden;
+        margin: toRem(-10);
+        position: relative;
+        overscroll-behavior: contain;
+
+        @media (hover: hover) {
+            &::-webkit-scrollbar-track {
+                margin: toRem(10) 0;
+            }
+        }
+
+        &.is-overscroll {
+            margin-right: 0;
+        }
+    }
+
+    &__option {
+        position: relative;
+        padding: toRem(8) toRem(8 + $iconSize) toRem(8) toRem(8);
+
+        &.is-active {
+            .select {
+                &__icon--option {
+                    opacity: 1;
+                }
+
+                &__text--option {
+                    color: var(--textBrand);
+                }
+            }
+        }
+    }
+
+    &__checkbox {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: toRem(4);
+    }
+
+    &__text {
+        &--option {
+            @include fontSize(p4);
+
+            display: inline-block;
+            vertical-align: middle;
+            transition: color 0.3s ease;
+            color: var(--textSecondary);
+        }
+    }
+
+    &__icon {
+        &--option {
+            @include center(vertical);
+
+            transition: opacity 0.3s ease;
+            right: toRem(10);
+            font-size: toRem($iconSize);
+            opacity: 0;
+
+            &::before {
+                color: var(--textBrand);
+            }
+        }
+    }
+
+    &.is-active {
+        .select {
+            &__options {
+                pointer-events: auto;
+            }
+
+            &__scroller {
+                overflow-y: auto;
+            }
+        }
+
+        .form-item {
+            &__icon--right {
+                transform: translate(0, -50%) rotate(180deg);
+            }
+        }
+    }
+}

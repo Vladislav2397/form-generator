@@ -1,0 +1,44 @@
+.filters-layout {
+    &__head {
+        line-height: toRem(24);
+        position: relative;
+    }
+
+    &__title {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__badge {
+        vertical-align: middle;
+        margin-left: toRem(8);
+    }
+
+    &__button {
+        @include center(vertical);
+
+        right: 0;
+    }
+
+    &__field {
+        @include marginLevel(top, green);
+    }
+
+    &__input {
+        width: 100%;
+        min-width: auto;
+    }
+
+    @media (min-width: $tabletLate) {
+        &__form {
+            margin-right: toRem(-12);
+        }
+
+        &__field {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(33.333% - #{toRem(12)});
+            margin-right: toRem(12);
+        }
+    }
+}

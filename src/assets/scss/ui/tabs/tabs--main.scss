@@ -1,0 +1,12 @@
+.tabs {
+    &__item {
+        cursor: pointer;
+        transition: 0.3s ease;
+        transition-property: color;
+    }
+
+    &__toggle {
+        transition: 0.3s ease;
+        transition-property: transform, width;
+    }
+}

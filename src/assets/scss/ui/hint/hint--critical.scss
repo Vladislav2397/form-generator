@@ -1,0 +1,15 @@
+.hint {
+    opacity: 0.5;
+    color: var(--textSecondary);
+    display: inline-block;
+
+    &--size {
+        &-m {
+            font-size: toRem(16);
+        }
+
+        &-l {
+            font-size: toRem(20);
+        }
+    }
+}

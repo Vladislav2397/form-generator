@@ -1,0 +1,17 @@
+.progress-bar {
+    &__step {
+        span {
+            transition: width 0.3s linear, min-width 0.3s linear, opacity 0.233s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+    }
+}
+
+@keyframes mov-strips {
+    0% {
+        left: toRem(-22);
+    }
+
+    100% {
+        left: 0;
+    }
+}

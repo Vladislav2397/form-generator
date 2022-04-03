@@ -1,0 +1,185 @@
+.card-bank {
+    $b: &;
+
+    padding-right: toRem(36);
+    position: relative;
+
+    &__logo {
+        height: toRem(24);
+    }
+
+    &__logo,
+    &__title {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__bank {
+        width: inherit;
+        height: inherit;
+    }
+
+    &__title {
+        @include fontSize(p4);
+
+        margin-left: toRem(6);
+    }
+
+    &__action {
+        position: absolute;
+        top: toRem(12);
+        right: toRem(12);
+    }
+
+    &__icon {
+        font-size: toRem(20);
+        color: var(--textBrand);
+    }
+
+    &--status {
+        &-wrong {
+            #{$b}__icon {
+                color: var(--textSecondary);
+            }
+        }
+    }
+
+    &__information {
+        @include fontSize(p5);
+
+        color: var(--textWarning);
+    }
+
+    &__value {
+        p {
+            @include fontSize(p5);
+
+            strong {
+                @include fontSize(p4, (weight: 600, mono: true));
+
+                display: inline-block;
+                white-space: nowrap;
+            }
+
+            & + p {
+                color: var(--textSuccess);
+            }
+        }
+    }
+
+    @media (max-width: $maxMobile) {
+        &__left {
+            @include marginLevel(bottom, green);
+        }
+
+        &__image,
+        &__title {
+            @include marginLevel(bottom, red);
+        }
+
+        &__value {
+            display: flex;
+            gap: toRem(8);
+
+            p {
+                order: 2;
+                flex-basis: min-content;
+
+                & + p {
+                    order: 1;
+                }
+
+                strong {
+                    @include marginLevel(top, red);
+
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    &__wrong {
+        @include fontSize(p4);
+    }
+
+    @media (min-width: $tablet) {
+        &__value {
+            p {
+                @include fontSize(p4);
+
+                strong {
+                    margin-left: toRem(8);
+                }
+
+                & + p {
+                    @include fontSize(p5);
+
+                    strong {
+                        @include fontSize(p5);
+                    }
+                }
+
+                & + & {
+                    @include marginLevel(top,red);
+                }
+            }
+
+            &--align-right {
+                text-align: right;
+                padding-right: toRem(8);
+            }
+
+            &--single {
+                p {
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        vertical-align: middle;
+                        min-height: toRem(40);
+                    }
+                }
+            }
+        }
+
+        &__action {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &__information {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: toRem(12);
+        }
+
+        &__left,
+        &__right {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &__left {
+            position: relative;
+            padding-right: toRem(16);
+            box-sizing: border-box;
+            width: calc(100% - #{toRem(213)});
+            white-space: nowrap;
+        }
+
+        &__title {
+            @include ellipsis;
+        }
+
+        &__right {
+            min-width: toRem(213);
+            max-width: toRem(213);
+        }
+
+        &__wrong {
+            @include fontSize(p5);
+
+            width: toRem(129);
+            margin-left: auto;
+        }
+    }
+}

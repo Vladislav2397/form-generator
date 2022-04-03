@@ -1,0 +1,25 @@
+.radio-toggle {
+    transition: 0.3s ease;
+    transition-property: border-color;
+
+    span {
+        transition: 0.3s ease;
+        transition-property: background-color, transform;
+    }
+
+    @media (min-width: $desktop) {
+        &:hover {
+            border-color: var(--borderBaseHover);
+        }
+
+        &.is-checked {
+            &:hover {
+                border-color: var(--controlBrandBackgroundHover);
+
+                span {
+                    background-color: var(--controlBrandBackgroundHover);
+                }
+            }
+        }
+    }
+}
