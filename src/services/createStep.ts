@@ -1,7 +1,7 @@
 import Vue from "vue"
 import { zip } from "@/helpers"
 
-const createState = <
+export const createState = <
     Fields extends Record<string, StepField>
 >(fields: Fields): Record<keyof Fields, Fields[keyof Fields]['value']> => {
     const keys: (keyof Fields)[] = Object.keys(fields)
@@ -14,7 +14,7 @@ const createState = <
     )) as Record<keyof Fields, Fields[keyof Fields]['value']>
 }
 
-const createErrors = <
+export const createErrors = <
     Fields extends Record<string, StepField>
 >(fields: Fields): Record<keyof Fields, Fields[keyof Fields]['error']> => {
     const keys: (keyof Fields)[] = Object.keys(fields)
@@ -25,6 +25,44 @@ const createErrors = <
             zip(keys, values.map(item => item.error))
         )
     )) as Record<keyof Fields, Fields[keyof Fields]['error']>
+}
+
+export const createAppearance = <
+    Fields extends Record<string, StepField>
+>(fields: Fields) => {
+    const keys: (keyof Fields)[] = Object.keys(fields)
+    const values: StepField[] = Object.values(fields)
+
+    return Object.fromEntries(
+        zip(
+            keys,
+            values.map(
+                item => ({
+                    validRegex: item.validRegex,
+                    component: item.component,
+                    ...item.binding
+                })
+            )
+        )
+    ) as Record<
+        keyof Fields,
+        {
+            validRegex: Fields[keyof Fields]['validRegex']
+        } & Fields[keyof Fields]['binding']>
+}
+
+export const createBinding = <
+    Fields extends Record<string, StepField>
+>(fields: Fields) => {
+    const keys: (keyof Fields)[] = Object.keys(fields)
+    const values: StepField[] = Object.values(fields)
+
+    return Object.fromEntries(
+        zip(
+            keys,
+            values.map(val => ({ ...val.binding }))
+        )
+    )
 }
 
 interface Field {
@@ -39,19 +77,4 @@ export type StepField<Value = unknown, Error = unknown, Binding = Field['binding
     error: Error
     validRegex: Field['validRegex']
     binding: Binding
-}
-
-interface StepAppearance<T extends Record<string, unknown>> {
-    [p: keyof T]: Field
-}
-
-export default class Step<Fields extends Record<string, StepField>> {
-    state: Record<keyof Fields, Fields[keyof Fields]['value']>
-    errors: Record<keyof Fields, Fields[keyof Fields]['error']>
-    // appearance: StepAppearance<Fields>
-
-    constructor(fields: Fields) {
-        this.state = createState(fields)
-        this.errors = createErrors(fields)
-    }
 }

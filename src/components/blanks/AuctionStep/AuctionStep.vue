@@ -2,27 +2,25 @@
 
 .b-auction-step
     c-grid-form(
-        :fieldMap="fields"
+        :fieldMap="fieldsAppearance"
         :layout="layout"
-        :values.sync="auctionFields.values"
-        :errors.sync="auctionFields.errors"
+        :values.sync="auctionStep.state"
+        :errors.sync="auctionStep.errors"
         :spacing="['green', 12]"
     )
-    p {{ auctionFields.values }}
-    p {{ auctionFields.errors }}
+    //p {{ auctionStep.state }}
+    //p {{ auctionStep.errors }}
 
 </template>
 
 <script lang="ts">
-import {Component, InjectReactive, Vue} from 'vue-property-decorator'
+import {Component, Mixins} from 'vue-property-decorator'
 import GridForm from "@/components/blanks/modals/modal-add-company/GridForm.vue"
 import Select from "@/components/ui/Select.vue"
 import InputMultiDatepicker from "@/components/ui/InputMultiDatepicker.vue"
 import InputDatepicker from "@/components/ui/InputDatepicker.vue"
 import Input from "@/components/ui/Input.vue"
-// import {auctionStep} from "@/services/auctionStep"
-import {fieldByName, fieldByNameWithKey} from "@/utils/field/genInputData"
-import AuctionFieldsService from "@/services/AuctionFieldsService"
+import AuctionStepMixin from "@/mixins/steps/auctionStep/auctionStepMixin"
 
 @Component({
     components: {
@@ -33,34 +31,36 @@ import AuctionFieldsService from "@/services/AuctionFieldsService"
         'c-input': Input,
     },
 })
-export default class AuctionStep extends Vue {
-    @InjectReactive(AuctionFieldsService.key) auctionFields!: AuctionFieldsService
+export default class AuctionStep extends Mixins(AuctionStepMixin) {
+    is663 = false
 
-    // auctionStep = auctionStep
+    get isProduct() {
+        return this.is663 ? /\d{11}/ : /\d{19}/
+    }
 
-    fields = {
-        number: fieldByName('auctionNumber'),
-        ...fieldByNameWithKey('financeProductId', {
-            binding: {
-                options: [
-                    {
-                        id: 1,
-                        text: 'bank guarantee',
-                    },
-                    {
-                        id: 2,
-                        text: 'bank guarant',
-                    },
-                    {
-                        id: 3,
-                        text: 'bank guar',
-                    },
-                ]
+    get fieldsAppearanceAppend() {
+        return {
+            number: {
+                validRegex: this.isProduct,
+                binding: {
+                    loading: false,
+                }
+            },
+            financeProductId: {
+                binding: {
+                    options: [
+                        {
+                            id: 1,
+                            text: 'bank guarantee'
+                        },
+                        {
+                            id: 2,
+                            text: 'auction'
+                        }
+                    ]
+                }
             }
-        }),
-        date: fieldByName('auctionDate'),
-        sum: fieldByName('auctionSum'),
-        ...fieldByNameWithKey('proposedPrice'),
+        }
     }
 
     get layout(): string[][] {

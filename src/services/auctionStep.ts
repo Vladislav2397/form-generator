@@ -1,185 +1,12 @@
-import Vue from "vue"
-import Step, {StepField} from "@/services/createStep"
+import {
+    createAppearance, createBinding,
+    createErrors,
+    createState,
+    StepField
+} from "@/services/createStep"
 import {Maybe} from "@/types/utils/other"
-
-export const state = Vue.observable({
-    number: '',
-    financeProductId: null,
-    date: ['', ''],
-    sum: '',
-    proposedPrice: '',
-})
-
-export const errors = Vue.observable({
-    number: false,
-    financeProductId: false,
-    date: [false, false],
-    sum: false,
-    proposedPrice: false,
-})
-
-export const isValid = (): boolean => {
-    return Object.values(state).every(item => {
-        console.log('auctionStep isValid')
-
-        if (Array.isArray(item)) {
-            return item.every(value => Boolean(value))
-        }
-        return Boolean(item)
-    })
-}
-
-export const appearance = {
-    number: {
-        component: 'input',
-        validRegex: /.+/,
-        label: 'Номер аукциона',
-        placeholder: 'Введите номер аукциона',
-        mask: 'number',
-        loading: false,
-        size: 'l',
-    },
-    financeProductId: {
-        component: 'select',
-        validRegex: /.+/,
-        label: 'Тип банковской гарантии',
-        placeholder: 'Выберите тип',
-        size: 'l',
-        options: [
-            {
-                id: 1,
-                text: 'some text'
-            }
-        ],
-    },
-    date: {
-        component: 'input-multi-datepicker',
-        validRegex: /.+/,
-        label: 'Срок предоставления',
-        placeholders: ['дд.мм.гггг', 'дд.мм.гггг'],
-        size: 'l',
-    },
-    sum: {
-        component: 'input',
-        validRegex: /.+/,
-        label: 'Сумма гарантии, ₽',
-        placeholder: 'Введите сумму',
-        mask: 'decimal',
-        size: 'l',
-    },
-    proposedPrice: {
-        component: 'input',
-        validRegex: /.+/,
-        label: 'Итоговая цена контракта, ₽',
-        placeholder: 'Введите цену',
-        mask: 'decimal',
-        size: 'l',
-    },
-}
-
-export const createAuctionStep = (fields?: any) => {
-    const createState = () => ({
-        number: '',
-        financeProductId: null,
-        date: ['', ''],
-        sum: '',
-        proposedPrice: '',
-    })
-
-    const state = Vue.observable({
-        ...createState(),
-        ...fields,
-    })
-    const errors = Vue.observable({
-        number: false,
-        financeProductId: false,
-        date: [false, false],
-        sum: false,
-        proposedPrice: false,
-    })
-    const noReactive = {
-        number: {
-            component: 'input',
-            validRegex: /.+/,
-            label: 'Номер аукциона',
-            placeholder: 'Введите номер аукциона',
-            mask: 'number',
-            loading: false,
-            size: 'l',
-        },
-        financeProductId: {
-            component: 'select',
-            validRegex: /.+/,
-            label: 'Тип банковской гарантии',
-            placeholder: 'Выберите тип',
-            size: 'l',
-            options: [
-                {
-                    id: 1,
-                    text: 'some text'
-                }
-            ],
-        },
-        date: {
-            component: 'input-multi-datepicker',
-            validRegex: /.+/,
-            label: 'Срок предоставления',
-            placeholders: ['дд.мм.гггг', 'дд.мм.гггг'],
-            size: 'l',
-        },
-        sum: {
-            component: 'input',
-            validRegex: /.+/,
-            label: 'Сумма гарантии, ₽',
-            placeholder: 'Введите сумму',
-            mask: 'decimal',
-            size: 'l',
-        },
-        proposedPrice: {
-            component: 'input',
-            validRegex: /.+/,
-            label: 'Итоговая цена контракта, ₽',
-            placeholder: 'Введите цену',
-            mask: 'decimal',
-            size: 'l',
-        },
-    }
-    const bind = (name: string): Record<string, unknown> => {
-        return { ...binding[name], ...noReactive[name] }
-    }
-    const validate = (): void => {
-        console.log('auction step validate')
-
-        Object.entries(state).forEach(([name, value]) => {
-            const data = bind(name)
-
-            if (Array.isArray(errors[name])) {
-                errors[name] = value.map(
-                    val => !data.validRegex.test(val ?? '')
-                )
-            } else {
-                errors[name] = !data.validRegex.test(value ?? '')
-            }
-        })
-    }
-    const isValid = (): boolean => {
-        console.log('auction step isValid')
-
-        return Object.values(errors).every(item => !item)
-    }
-
-    return {
-        state,
-        errors,
-        binding,
-        static: noReactive,
-        bind,
-        validate,
-        isValid,
-    }
-}
-
-export const auctionStep = createAuctionStep()
+import {sum} from "@/helpers"
+import Vue from "vue"
 
 type AuctionStepFields = {
     number: StepField<string, boolean>,
@@ -189,78 +16,162 @@ type AuctionStepFields = {
     proposedPrice: StepField<string, boolean>,
 }
 
-export class AuctionStep extends Step<AuctionStepFields> {
-    static key = Symbol()
+export const auctionStepKey = Symbol('AuctionStep')
+export const createAuctionStep = (fields?: Partial<AuctionStepFields>) => {
+    const stepFields = {
+        number: {
+            component: 'input',
+            value: '',
+            error: false,
+            validRegex: /.+/,
+            binding: {
+                label: 'Номер аукциона',
+                placeholder: 'Введите номер аукциона',
+                mask: 'number',
+                loading: false,
+                size: 'l',
+            }
+        },
+        financeProductId: {
+            component: 'select',
+            value: null,
+            error: false,
+            validRegex: /.+/,
+            binding: {
+                label: 'Тип банковской гарантии',
+                placeholder: 'Выберите тип',
+                size: 'l',
+                options: [],
+            }
+        },
+        date: {
+            component: 'input-multi-datepicker',
+            value: ['', ''],
+            error: [false, false],
+            validRegex: /.+/,
+            binding: {
+                label: 'Срок предоставления',
+                placeholders: ['дд.мм.гггг', 'дд.мм.гггг'],
+                size: 'l',
+            }
+        },
+        sum: {
+            component: 'input',
+            value: '',
+            error: false,
+            validRegex: /.+/,
+            binding: {
+                label: 'Сумма гарантии, ₽',
+                placeholder: 'Введите сумму',
+                mask: 'decimal',
+                size: 'l',
+            }
+        },
+        proposedPrice: {
+            component: 'input',
+            value: '',
+            error: false,
+            validRegex: /.+/,
+            binding: {
+                label: 'Итоговая цена контракта, ₽',
+                placeholder: 'Введите цену',
+                mask: 'decimal',
+                size: 'l',
+            }
+        },
+        ...fields,
+    }
 
-    constructor(fields?: Partial<AuctionStepFields>) {
-        super({
-            number: {
-                component: 'input',
-                value: '',
-                error: false,
-                validRegex: /.+/,
-                binding: {
-                    label: 'Номер аукциона',
-                    placeholder: 'Введите номер аукциона',
-                    mask: 'number',
-                    loading: false,
-                    size: 'l',
-                }
-            },
-            financeProductId: {
-                component: 'select',
-                value: null,
-                error: false,
-                validRegex: /.+/,
-                binding: {
-                    label: 'Тип банковской гарантии',
-                    placeholder: 'Выберите тип',
-                    size: 'l',
-                    options: [],
-                }
-            },
-            date: {
-                component: 'input-multi-datepicker',
-                value: ['', ''],
-                error: [false, false],
-                validRegex: /.+/,
-                binding: {
-                    label: 'Срок предоставления',
-                    placeholders: ['дд.мм.гггг', 'дд.мм.гггг'],
-                    size: 'l',
-                }
-            },
-            sum: {
-                component: 'input',
-                value: '',
-                error: false,
-                validRegex: /.+/,
-                binding: {
-                    label: 'Сумма гарантии, ₽',
-                    placeholder: 'Введите сумму',
-                    mask: 'decimal',
-                    size: 'l',
-                }
-            },
-            proposedPrice: {
-                component: 'input',
-                value: '',
-                error: false,
-                validRegex: /.+/,
-                binding: {
-                    label: 'Итоговая цена контракта, ₽',
-                    placeholder: 'Введите цену',
-                    mask: 'decimal',
-                    size: 'l',
-                }
-            },
-            ...fields,
+    const state = createState(stepFields)
+    const errors = createErrors(stepFields)
+    const binding = createBinding(stepFields)
+    const appearance = createAppearance(stepFields)
+
+    const setBinding = (bindings: any) => {
+        Object.entries(bindings).forEach(([name, value]) => {
+            binding[name] = {
+                ...binding[name],
+                ...value,
+            }
         })
     }
 
-    validate(): void {
-        //
+    const setAppearance = (appearancies: any) => {
+        Object.entries(appearancies).forEach(([name, value]) => {
+            Object.entries(([appearanceName, appearanceValue]) => {
+                Vue.set(appearance[name], appearanceName, appearanceValue)
+            })
+        })
+    }
+
+    const validate = (): void => {
+        console.log('auctionStep.validate')
+
+        Object.entries(state).forEach(([name, value]) => {
+            const validRegex = appearance[name].validRegex
+
+            if (Array.isArray(value)) {
+                errors[name] = value.map(
+                    val => !validRegex.test(val ?? '')
+                )
+            } else {
+                console.log('error datas')
+                console.log(name, errors[name], !validRegex.test(value ?? ''))
+                errors[name] = !validRegex.test(value ?? '')
+            }
+        })
+    }
+
+    const isValid = (): boolean => {
+        console.log('auctionStep.isValid')
+
+        return Object.values(errors ?? {}).every(error => {
+            return Array.isArray(error)
+                ? error.map(err => !err)
+                : !error
+        })
+    }
+
+    const allCount = () => {
+        return sum(...Object.values(state).map(value => {
+            return Array.isArray(value)
+                ? value.length
+                : 1
+        }))
+    }
+
+    const filledCount = () => {
+        return sum(...Object.values(state).map(value => {
+            return Array.isArray(value)
+                ? sum(...value.map(val => +Boolean(val)))
+                : +Boolean(value)
+        }))
+    }
+
+    const counter = () => {
+        return {
+            filled: filledCount(),
+            all: allCount(),
+        }
+    }
+
+    return {
+        state,
+        errors,
+        binding,
+        appearance,
+        getters: {
+            isValid,
+            allCount,
+            filledCount,
+            counter,
+        },
+        isValid,
+        validate,
+        setAppearance,
+        setBinding,
+        allCount,
+        filledCount,
+        counter,
     }
 }
-
-const AS = new AuctionStep()
